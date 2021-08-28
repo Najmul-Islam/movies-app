@@ -1,0 +1,14 @@
+.footer__bg {
+  background-color: rgb(0, 0, 0);
+  color: rgb(142, 142, 147);
+}
+
+.footer__nav--link {
+  color: rgb(142, 142, 147);
+  text-decoration: none;
+}
+
+.footer__nav--link:hover {
+  color: #fff;
+  text-decoration: underline;
+}
