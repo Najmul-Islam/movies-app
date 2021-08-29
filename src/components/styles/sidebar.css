@@ -6,4 +6,11 @@
 
 .sidebar__link {
   color: rgba(255, 255, 255, 0.6);
+  font-size: 13px !important;
 }
+
+/* .sidebar__genres {
+  width: 100%;
+  height: 600px;
+  overflow-y: scroll;
+} */

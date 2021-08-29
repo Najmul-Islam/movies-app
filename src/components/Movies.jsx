@@ -1,100 +1,34 @@
 import React, { useState, useEffect } from "react";
 import Movie from "./Movie";
+import { useGlobalContext } from "../TypeContext";
 import Sidebar from "./Sidebar";
 import Pagination from "./common/Pagination";
 
 import { paginate } from "../utils/paginate";
 import "./styles/movies.css";
 
-// export const TypeContext = React.createContext();
-
 const Movies = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [allMovies, setAllMovies] = useState([]);
+  const {
+    allMovies,
+    setAllMovies,
+    isLoading,
+    currentPage,
+    setCurrentPage,
+    categories,
+    selectedCategorie,
+    genres,
+    selectedGenre,
+    handleCategorieSelect,
+  } = useGlobalContext();
 
   const [pageSize, setPageSize] = useState(4);
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const [genres, setGenres] = useState([]);
-  const [selectedGenre, setSelectedGenre] = useState([]);
-
-  const [categories, setCategories] = useState([]);
-  const [selectedCategorie, setSelectedCategorie] = useState([]);
-
-  const fetchMovies = () => {
-    setIsLoading(true);
-    fetch("http://localhost:1337/movies")
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error(response.statusText);
-        }
-      })
-      .then((movies) => {
-        setAllMovies(movies);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const getGenres = () => {
-    fetch("http://localhost:1337/genres")
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error(response.statusText);
-        }
-      })
-      .then((genres) => {
-        setGenres(genres);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const getCategories = () => {
-    fetch("http://localhost:1337/categories")
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error(response.statusText);
-        }
-      })
-      .then((categories) => {
-        setCategories(categories);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  useEffect(() => {
-    fetchMovies();
-    getGenres();
-    getCategories();
-  }, []);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
 
-  const handleTypeSelect = (type) => {
-    console.log(type);
-  };
-
   const handleGenreSelect = (genre) => {
     setAllMovies(genre.movies);
-    setCurrentPage(1);
-  };
-
-  const handleCategorieSelect = (category) => {
-    setAllMovies(category.movies);
     setCurrentPage(1);
   };
 

@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import React from "react";
 import { FaAngleDoubleRight } from "react-icons/fa";
 import "./styles/sidebar.css";
 
@@ -13,7 +12,7 @@ const Sidebar = ({ categories, genres, onCategorieSelect, onGenreSelect }) => {
             <li key={category.id} className="nav-item">
               <span
                 onClick={() => onCategorieSelect(category)}
-                className="nav-link sidebar__link"
+                className="nav-link cursor__pointer sidebar__link"
               >
                 <FaAngleDoubleRight /> {category.category}
               </span>
@@ -24,12 +23,12 @@ const Sidebar = ({ categories, genres, onCategorieSelect, onGenreSelect }) => {
 
       <div className="sidebar__nav mt-4 border__bottom">
         <h5>Genres</h5>
-        <ul className="nav flex-column">
+        <ul className="nav flex-column sidebar__genres">
           {genres.map((genre) => (
             <li key={genre.id} className="nav-item">
               <span
                 onClick={() => onGenreSelect(genre)}
-                className="nav-link sidebar__link"
+                className="nav-link cursor__pointer sidebar__link"
               >
                 <FaAngleDoubleRight /> {genre.genre}
               </span>

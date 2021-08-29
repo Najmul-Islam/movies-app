@@ -2,10 +2,9 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
+import SingleMovie from "./pages/SingleMovie";
 import Blog from "./pages/Blog";
 import About from "./pages/About";
-import Movies from "./pages/Movies";
-import Series from "./pages/Series";
 import ContactUs from "./pages/ContactUs";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsCondition from "./pages/TermsCondition";
@@ -21,8 +20,7 @@ function App() {
       <Header />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/movies" component={Movies} />
-        <Route exact path="/series" component={Series} />
+        <Route exact path="/movie/:id" component={SingleMovie} />
         <Route exact path="/blog" component={Blog} />
         <Route exact path="/about-us" component={About} />
         <Route exact path="/contact-us" component={ContactUs} />
