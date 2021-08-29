@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useGlobalContext } from "../TypeContext";
+import { useGlobalContext } from "../lib/MoviesContext";
 import { NavLink } from "react-router-dom";
 import { FaSearch, FaAlignRight, FaTimes } from "react-icons/fa";
 import "./styles/navbar.css";
@@ -87,19 +87,17 @@ const Header = () => {
 
           {/* search */}
           <div className="search__container">
-            <form>
-              <input
-                className="search__input"
-                type="text"
-                name="query"
-                placeholder="Search..."
-                value={searchQuery}
-                onChange={(e) => handleSearch(e.target.value)}
-              />
-              <button className="search__btn" type="submit">
-                <FaSearch />
-              </button>
-            </form>
+            <input
+              className="search__input"
+              type="text"
+              name="query"
+              placeholder="Search..."
+              value={searchQuery}
+              onChange={(e) => handleSearch(e.currentTarget.value)}
+            />
+            <button className="search__btn" type="submit">
+              <FaSearch />
+            </button>
           </div>
         </div>
       </div>

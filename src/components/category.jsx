@@ -1,5 +1,5 @@
 import React from "react";
-import { useGlobalContext } from "../TypeContext";
+import { useGlobalContext } from "../lib/MoviesContext";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
@@ -12,7 +12,6 @@ const Category = () => {
     responsiveClass: true,
     nav: true,
     autoplay: false,
-    scroll: true,
     autoWidth: true,
     margin: 10,
     dots: false,

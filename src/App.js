@@ -12,7 +12,7 @@ import NotFound from "./pages/NotFound";
 import Header from "./components/header";
 import Footer from "./components/Footer";
 
-import { AppProvider } from "./TypeContext";
+import { AppProvider } from "./lib/MoviesContext";
 
 function App() {
   return (

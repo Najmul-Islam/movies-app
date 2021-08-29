@@ -1,9 +1,8 @@
 import React from "react";
+import { useGlobalContext } from "../lib/MoviesContext";
 import Movie from "./Movie";
-import { useGlobalContext } from "../TypeContext";
 import Sidebar from "./Sidebar";
 import Pagination from "./common/Pagination";
-
 import "./styles/movies.css";
 
 const Movies = () => {

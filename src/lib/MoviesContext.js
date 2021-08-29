@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { paginate } from "./utils/paginate";
+import { paginate } from "../utils/paginate";
 
 const TypeContext = React.createContext();
 
@@ -19,6 +19,7 @@ const AppProvider = ({ children }) => {
   const [selectedGenre, setSelectedGenre] = useState([]);
 
   const [searchQuery, setSearchQuery] = useState("");
+  const [searchMovies, setSearchMovies] = useState([]);
 
   const fetchMovies = () => {
     setIsLoading(true);
@@ -116,20 +117,19 @@ const AppProvider = ({ children }) => {
     setCurrentPage(1);
   };
 
-  const movies = paginate(allMovies, currentPage, pageSize);
-
   const handleSearch = (query) => {
     setSearchQuery(query);
-    setCurrentPage(1);
-    setSelectedGenre(null);
-    if (searchQuery) {
-      const filtered = allMovies.filter((movie) =>
-        movie.title.toLowerCase().startsWith(searchQuery.toLowerCase())
-      );
-      console.log(filtered);
-      setAllMovies(filtered);
-    }
+    console.log(searchQuery);
   };
+
+  // if (searchQuery) {
+  //   const filtered = allMovies.filter((movie) =>
+  //     movie.title.toLowerCase().startsWith(searchQuery.toLowerCase())
+  //   );
+  //   console.log(filtered);
+  //   setAllMovies(filtered);
+  // }
+  let movies = paginate(allMovies, currentPage, pageSize);
 
   return (
     <TypeContext.Provider
