@@ -14,7 +14,6 @@ const Header = () => {
     handleSearch,
   } = useGlobalContext();
 
-  // const [search, setSearch] = useState("");
   const [isNavCollapsed, setIsNavCollapsed] = useState(true);
 
   const capitalizeTxt = (txt) => {
@@ -22,12 +21,6 @@ const Header = () => {
   };
 
   const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log(search);
-  //   setSearch("");
-  // };
 
   return (
     <nav className="navbar navbar-expand-md navbar-dark py-1 border__bottom bg__dark">
@@ -63,7 +56,7 @@ const Header = () => {
           <ul className="navbar-nav me-auto mb-2 mb-md-0">
             {categories.map((category) => {
               return category.id === 3 ? (
-                <li className="nav-item">
+                <li key={category.id} className="nav-item">
                   <NavLink
                     to="/"
                     onClick={() => handleCategorieSelect(category)}
@@ -76,8 +69,8 @@ const Header = () => {
             })}
             {types.map((type) => (
               <li
-                onClick={() => handleTypeSelect(type)}
                 key={type.id}
+                onClick={() => handleTypeSelect(type)}
                 className="nav-item"
               >
                 <NavLink to="/" className="nav-link mx-0 mx-md-2">
@@ -101,7 +94,7 @@ const Header = () => {
                 name="query"
                 placeholder="Search..."
                 value={searchQuery}
-                onChange={(e) => handleSearch(e.currentTarget.value)}
+                onChange={(e) => handleSearch(e.target.value)}
               />
               <button className="search__btn" type="submit">
                 <FaSearch />

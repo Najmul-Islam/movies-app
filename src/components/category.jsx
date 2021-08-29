@@ -1,31 +1,18 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
+import { useGlobalContext } from "../TypeContext";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import "./styles/catergory.css";
 
-const categores = [
-  "Current Affairrrs",
-  "History & Culture",
-  "Environment & Wildlife",
-  "Identities",
-  "Travel",
-  "Health & wellbeing",
-  "Economy",
-  "Art",
-  "Health & wellbeing",
-  "Economy",
-  "Art",
-  "Health & wellbeing",
-  "Economy",
-  "Art",
-];
-
 const Category = () => {
+  const { genres, handleGenreSelect } = useGlobalContext();
+
   const options = {
     responsiveClass: true,
     nav: true,
     autoplay: false,
+    scroll: true,
     autoWidth: true,
     margin: 10,
     dots: false,
@@ -39,8 +26,14 @@ const Category = () => {
   return (
     <div className="bg__dark border__bottom mx-4 cursor__pointer">
       <OwlCarousel {...options} className="owl-container container-fluid">
-        {categores.map((category) => (
-          <span className="item text__primery category">{category}</span>
+        {genres.map((genre) => (
+          <span
+            key={genre.id}
+            onClick={() => handleGenreSelect(genre)}
+            className="item text__primery category"
+          >
+            {genre.genre}
+          </span>
         ))}
       </OwlCarousel>
     </div>

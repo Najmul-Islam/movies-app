@@ -19,17 +19,13 @@ const Movies = () => {
     genres,
     selectedGenre,
     handleCategorieSelect,
+    handleGenreSelect,
   } = useGlobalContext();
 
   const [pageSize, setPageSize] = useState(4);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
-  };
-
-  const handleGenreSelect = (genre) => {
-    setAllMovies(genre.movies);
-    setCurrentPage(1);
   };
 
   const movies = paginate(allMovies, currentPage, pageSize);

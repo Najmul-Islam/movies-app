@@ -16,6 +16,8 @@ const AppProvider = ({ children }) => {
   const [genres, setGenres] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState([]);
 
+  const [searchQuery, setSearchQuery] = useState("");
+
   const fetchMovies = () => {
     setIsLoading(true);
     fetch("http://localhost:1337/movies")
@@ -103,18 +105,23 @@ const AppProvider = ({ children }) => {
     setCurrentPage(1);
   };
 
-  // const handleSearch = (query) => {
-  //   setSearchQuery(query);
-  //   setCurrentPage(1);
-  //   setSelectedGenre(null);
-  //   if (searchQuery) {
-  //     const filtered = allMovies.filter((movie) =>
-  //       movie.title.toLowerCase().startsWith(searchQuery.toLowerCase())
-  //     );
-  //     console.log(filtered);
-  //     setAllMovies(filtered);
-  //   }
-  // };
+  const handleGenreSelect = (genre) => {
+    setAllMovies(genre.movies);
+    setCurrentPage(1);
+  };
+
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+    setCurrentPage(1);
+    setSelectedGenre(null);
+    if (searchQuery) {
+      const filtered = allMovies.filter((movie) =>
+        movie.title.toLowerCase().startsWith(searchQuery.toLowerCase())
+      );
+      console.log(filtered);
+      setAllMovies(filtered);
+    }
+  };
 
   return (
     <TypeContext.Provider
@@ -133,8 +140,12 @@ const AppProvider = ({ children }) => {
         selectedGenre,
         selectedCategorie,
         setSelectedCategorie,
+        searchQuery,
+        setSearchQuery,
         handleCategorieSelect,
         handleTypeSelect,
+        handleGenreSelect,
+        handleSearch,
       }}
     >
       {children}
