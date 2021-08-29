@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState } from "react";
 import { useGlobalContext } from "../TypeContext";
 import { NavLink } from "react-router-dom";
 import { FaSearch, FaAlignRight, FaTimes } from "react-icons/fa";

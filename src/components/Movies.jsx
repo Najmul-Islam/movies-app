@@ -1,34 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Movie from "./Movie";
 import { useGlobalContext } from "../TypeContext";
 import Sidebar from "./Sidebar";
 import Pagination from "./common/Pagination";
 
-import { paginate } from "../utils/paginate";
 import "./styles/movies.css";
 
 const Movies = () => {
   const {
+    movies,
     allMovies,
-    setAllMovies,
     isLoading,
     currentPage,
-    setCurrentPage,
+    pageSize,
     categories,
     selectedCategorie,
     genres,
     selectedGenre,
+    handlePageChange,
     handleCategorieSelect,
     handleGenreSelect,
   } = useGlobalContext();
-
-  const [pageSize, setPageSize] = useState(4);
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-  };
-
-  const movies = paginate(allMovies, currentPage, pageSize);
 
   if (isLoading) {
     return <h1>Loading...</h1>;

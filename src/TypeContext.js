@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { paginate } from "./utils/paginate";
 
 const TypeContext = React.createContext();
 
@@ -7,6 +8,7 @@ const AppProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(4);
 
   const [types, setTypes] = useState([]);
 
@@ -95,6 +97,10 @@ const AppProvider = ({ children }) => {
     getGenres();
   }, []);
 
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
   const handleTypeSelect = (type) => {
     setAllMovies(type.movies);
     setCurrentPage(1);
@@ -109,6 +115,8 @@ const AppProvider = ({ children }) => {
     setAllMovies(genre.movies);
     setCurrentPage(1);
   };
+
+  const movies = paginate(allMovies, currentPage, pageSize);
 
   const handleSearch = (query) => {
     setSearchQuery(query);
@@ -126,10 +134,12 @@ const AppProvider = ({ children }) => {
   return (
     <TypeContext.Provider
       value={{
+        movies,
         allMovies,
         setAllMovies,
         isLoading,
         setIsLoading,
+        pageSize,
         currentPage,
         setCurrentPage,
         types,
@@ -142,6 +152,7 @@ const AppProvider = ({ children }) => {
         setSelectedCategorie,
         searchQuery,
         setSearchQuery,
+        handlePageChange,
         handleCategorieSelect,
         handleTypeSelect,
         handleGenreSelect,
