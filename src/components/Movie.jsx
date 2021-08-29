@@ -1,28 +1,30 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 import "./styles/movie.css";
 
 const Movie = ({ movie }) => {
   return (
     <div className="movie">
-      <Link to={`movie/${movie.id}`}>
+      <NavLink to={`movie/${movie.id}`} style={{ textDecoration: "none" }}>
         <div className="img__container">
-          <div className="img__overley"></div>
           <img
             className="movie__img img-fluid"
             src={movie.image}
             alt={movie.title}
           />
+          <div className="img__overley">
+            <img src="images/play.svg" alt="" />
+          </div>
           <span className="movie__rate">
             <FaStar /> 7.3
           </span>
         </div>
-        <div className="movie__info">
+        <div className="movie__info" title={movie.title}>
           <h3 className="movie__title">{movie.title}</h3>
           <p className="movie__year">{movie.year}</p>
         </div>
-      </Link>
+      </NavLink>
     </div>
   );
 };

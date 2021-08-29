@@ -10,13 +10,38 @@
 .img__container {
   width: 100%;
   position: relative;
+  overflow: hidden;
 }
 .movie__img {
   object-fit: cover;
   width: 100%;
-  height: 180px;
+  height: 190px;
+  transition: all 0.3s ease-in-out;
 }
 
+.img__overley {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  transition: all 0.3s ease-out;
+  opacity: 0;
+}
+
+.img__overley img {
+  width: 50px;
+}
+
+.img__container:hover .img__overley {
+  opacity: 0.7;
+}
+.img__container:hover .movie__img {
+  transform: scale(1.2);
+  filter: blur(1px);
+}
 .movie__rate {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.5);
@@ -26,12 +51,13 @@
   font-weight: 300;
   bottom: 0px;
   right: 0px;
-  display: none;
+  margin-bottom: -40px;
   z-index: 10;
+  transition: 0.3s;
 }
 
 .img__container:hover .movie__rate {
-  display: block;
+  margin-bottom: 0;
 }
 
 .movie__info {
@@ -43,8 +69,9 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  transition: 0.2s ease;
 }
-.movie__title:hover {
+.movie__info:hover .movie__title {
   color: #408bea;
 }
 
