@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 const SingleMovie = () => {
   const [singleMovie, setSingleMovie] = useState({});
   const params = useParams();
-
-  console.log(params);
+  const history = useHistory();
 
   const getParams = () => {
     fetch(`http://localhost:1337/movies/${params.id}`)
@@ -26,10 +25,13 @@ const SingleMovie = () => {
 
   useEffect(() => {
     getParams();
-  }, []);
+  }, [params.id]);
 
   return (
     <div>
+      <button onClick={() => history.goBack()} className="btn btn-primary">
+        Back
+      </button>
       <h1>{singleMovie.title}</h1>
     </div>
   );
