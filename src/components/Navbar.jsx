@@ -93,9 +93,9 @@ const Header = () => {
               name="query"
               placeholder="Search..."
               value={searchQuery}
-              onChange={(e) => handleSearch(e.currentTarget.value)}
+              onChange={(e) => handleSearch(e.target.value)}
             />
-            <button className="search__btn" type="submit">
+            <button type="submit" className="search__btn">
               <FaSearch />
             </button>
           </div>

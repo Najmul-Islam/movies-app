@@ -5,6 +5,7 @@ const TypeContext = React.createContext();
 
 const AppProvider = ({ children }) => {
   const [allMovies, setAllMovies] = useState([]);
+  const [allDefaultMovies, setAllDefaultMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -19,7 +20,6 @@ const AppProvider = ({ children }) => {
   const [selectedGenre, setSelectedGenre] = useState([]);
 
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchMovies, setSearchMovies] = useState([]);
 
   const fetchMovies = () => {
     setIsLoading(true);
@@ -33,6 +33,7 @@ const AppProvider = ({ children }) => {
       })
       .then((movies) => {
         setAllMovies(movies);
+        setAllDefaultMovies(movies);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -117,18 +118,15 @@ const AppProvider = ({ children }) => {
     setCurrentPage(1);
   };
 
-  const handleSearch = (query) => {
+  const handleSearch = async (query) => {
+    const filtered = allDefaultMovies.filter((movie) => {
+      return movie.title.toLowerCase().includes(query.toLowerCase());
+    });
     setSearchQuery(query);
-    console.log(searchQuery);
+    setAllMovies(filtered);
+    setCurrentPage(1);
   };
 
-  // if (searchQuery) {
-  //   const filtered = allMovies.filter((movie) =>
-  //     movie.title.toLowerCase().startsWith(searchQuery.toLowerCase())
-  //   );
-  //   console.log(filtered);
-  //   setAllMovies(filtered);
-  // }
   let movies = paginate(allMovies, currentPage, pageSize);
 
   return (

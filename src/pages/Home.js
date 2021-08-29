@@ -5,7 +5,7 @@ import "./styles/home.css";
 const Home = () => {
   return (
     <div className="container-fluid">
-      <div className=" border__right">
+      <div className="border__right">
         <Movies />
       </div>
     </div>
