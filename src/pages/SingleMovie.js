@@ -28,7 +28,7 @@ const SingleMovie = () => {
   }, [params.id]);
 
   return (
-    <div>
+    <div className="container py-5">
       <button onClick={() => history.goBack()} className="btn btn-primary">
         Back
       </button>

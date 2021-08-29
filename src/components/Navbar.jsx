@@ -11,6 +11,7 @@ const Header = () => {
     handleTypeSelect,
     handleCategorieSelect,
     searchQuery,
+    setSearchQuery,
     handleSearch,
   } = useGlobalContext();
 
@@ -86,19 +87,21 @@ const Header = () => {
           </ul>
 
           {/* search */}
-          <div className="search__container">
-            <input
-              className="search__input"
-              type="text"
-              name="query"
-              placeholder="Search..."
-              value={searchQuery}
-              onChange={(e) => handleSearch(e.target.value)}
-            />
-            <button type="submit" className="search__btn">
-              <FaSearch />
-            </button>
-          </div>
+          <form onSubmit={handleSearch}>
+            <div className="search__container">
+              <input
+                className="search__input"
+                type="text"
+                name="query"
+                placeholder="Search..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+              <button type="submit" className="search__btn">
+                <FaSearch />
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </nav>

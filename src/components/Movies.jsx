@@ -3,6 +3,7 @@ import { useGlobalContext } from "../lib/MoviesContext";
 import Movie from "./Movie";
 import Sidebar from "./Sidebar";
 import Pagination from "./common/Pagination";
+import Loading from "./Loading";
 import "./styles/movies.css";
 
 const Movies = () => {
@@ -22,7 +23,7 @@ const Movies = () => {
   } = useGlobalContext();
 
   if (isLoading) {
-    return <h1>Loading...</h1>;
+    return <Loading />;
   }
 
   return (

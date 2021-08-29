@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import { paginate } from "../utils/paginate";
 
 const TypeContext = React.createContext();
@@ -20,6 +21,8 @@ const AppProvider = ({ children }) => {
   const [selectedGenre, setSelectedGenre] = useState([]);
 
   const [searchQuery, setSearchQuery] = useState("");
+
+  const history = useHistory();
 
   const fetchMovies = () => {
     setIsLoading(true);
@@ -118,13 +121,15 @@ const AppProvider = ({ children }) => {
     setCurrentPage(1);
   };
 
-  const handleSearch = async (query) => {
+  const handleSearch = (e) => {
+    e.preventDefault();
     const filtered = allDefaultMovies.filter((movie) => {
-      return movie.title.toLowerCase().includes(query.toLowerCase());
+      return movie.title.toLowerCase().includes(searchQuery.toLowerCase());
     });
-    setSearchQuery(query);
     setAllMovies(filtered);
     setCurrentPage(1);
+    history.push("/");
+    setSearchQuery("");
   };
 
   let movies = paginate(allMovies, currentPage, pageSize);
