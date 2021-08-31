@@ -7,7 +7,7 @@ const Loading = () => {
       style={{ height: "100vh" }}
       className="container-fluid w-100 d-flex justify-content-center align-items-center bg__dark"
     >
-      <div class="lds-facebook">
+      <div className="lds-facebook">
         <div></div>
         <div></div>
         <div></div>

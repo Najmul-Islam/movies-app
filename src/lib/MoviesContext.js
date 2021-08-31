@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { paginate } from "../utils/paginate";
+import _ from "lodash";
 
 const TypeContext = React.createContext();
 
@@ -26,7 +27,7 @@ const AppProvider = ({ children }) => {
 
   const fetchMovies = () => {
     setIsLoading(true);
-    fetch("http://localhost:1337/movies")
+    fetch("http://localhost:1337/movies?_sort=id:DESC")
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -79,7 +80,7 @@ const AppProvider = ({ children }) => {
   };
 
   const getGenres = () => {
-    fetch("http://localhost:1337/genres")
+    fetch("http://localhost:1337/genres?_sort=genre:ASC")
       .then((response) => {
         if (response.ok) {
           return response.json();

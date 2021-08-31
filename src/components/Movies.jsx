@@ -26,13 +26,17 @@ const Movies = () => {
     return <Loading />;
   }
 
+  if (allMovies.length === 0) {
+    return <h1>There no movie</h1>;
+  }
+
   return (
     <>
       <div className="row">
         <div className="col-12 col-xl-10 col-md-9 p-5 movies__item">
-          {movies.map((movie) => (
-            <Movie key={movie.id} movie={movie} />
-          ))}
+          {movies.map((movie) => {
+            return <Movie key={movie.id} movie={movie} />;
+          })}
         </div>
 
         <div className="col-xl-2 col-md-3 d-none d-md-block">

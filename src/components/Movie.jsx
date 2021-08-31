@@ -1,5 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+// import SingleLoading from "./SingleLoading.js";
+import { useGlobalContext } from "../lib/MoviesContext";
 import { FaStar } from "react-icons/fa";
 import "./styles/movie.css";
 

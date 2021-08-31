@@ -68,6 +68,7 @@ const Header = () => {
                 </li>
               ) : null;
             })}
+
             {types.map((type) => (
               <li
                 key={type.id}
