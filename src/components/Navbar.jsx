@@ -55,7 +55,7 @@ const Header = () => {
         >
           {/* navlink */}
           <ul className="navbar-nav me-auto mb-2 mb-md-0">
-            {categories.map((category) => {
+            {/* {categories.map((category) => {
               return category.id === 3 ? (
                 <li key={category.id} className="nav-item">
                   <NavLink
@@ -67,19 +67,39 @@ const Header = () => {
                   </NavLink>
                 </li>
               ) : null;
-            })}
+            })} */}
+            <li className="nav-item">
+              <NavLink exact to="/" className="nav-link mx-0 mx-md-2 ">
+                Home
+              </NavLink>
+            </li>
 
-            {types.map((type) => (
+            {/* {types.map((type) => (
               <li
                 key={type.id}
                 onClick={() => handleTypeSelect(type)}
                 className="nav-item"
               >
                 <NavLink to="/" className="nav-link mx-0 mx-md-2">
-                  {capitalizeTxt(type.type)}
+                  Movies
                 </NavLink>
               </li>
-            ))}
+
+
+            ))} */}
+
+            <li className="nav-item">
+              <NavLink exact to="/movies" className="nav-link mx-0 mx-md-2 ">
+                Movies
+              </NavLink>
+            </li>
+
+            <li className="nav-item">
+              <NavLink exact to="/tv-series" className="nav-link mx-0 mx-md-2 ">
+                Tv-Series
+              </NavLink>
+            </li>
+
             <li className="nav-item">
               <NavLink exact to="/blog" className="nav-link mx-0 mx-md-2 ">
                 Blog

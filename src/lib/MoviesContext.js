@@ -80,7 +80,8 @@ const AppProvider = ({ children }) => {
   };
 
   const getGenres = () => {
-    fetch("http://localhost:1337/genres?_sort=genre:ASC")
+    // fetch("http://localhost:1337/genres?_sort=genre:ASC")
+    fetch("http://localhost:1337/genres")
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -118,8 +119,14 @@ const AppProvider = ({ children }) => {
   };
 
   const handleGenreSelect = (genre) => {
-    setAllMovies(genre.movies);
-    setCurrentPage(1);
+    const genreMaps = allDefaultMovies.map((movie) => {
+      const genreFilterd = movie.genres.filter((genre) => genre.genre);
+      return genreFilterd;
+    });
+    if (genreMaps === genre.genre) {
+      setAllMovies(genres.movies);
+    }
+    console.log(genreMaps);
   };
 
   const handleSearch = (e) => {

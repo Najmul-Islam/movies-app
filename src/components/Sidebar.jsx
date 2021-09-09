@@ -1,8 +1,9 @@
 import React from "react";
 import { FaAngleDoubleRight } from "react-icons/fa";
+import { genres } from "../services/genres";
 import "./styles/sidebar.css";
 
-const Sidebar = ({ categories, genres, onCategorieSelect, onGenreSelect }) => {
+const Sidebar = ({ categories, onCategorieSelect, onGenreSelect }) => {
   return (
     <div className="sidebar bg__dark border__left">
       <div className="sidebar__nav mt-4 border__bottom">

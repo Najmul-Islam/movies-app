@@ -1,8 +1,7 @@
 import React from "react";
-import Movies from "../components/Movies/Movies";
-import "./styles/home.css";
+import Movies from "../../components/Movies/Movies";
 
-const Home = () => {
+const MoviesPage = () => {
   return (
     <div className="container-fluid">
       <div className="border__right">
@@ -12,4 +11,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default MoviesPage;
