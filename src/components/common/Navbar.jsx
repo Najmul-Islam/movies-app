@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { useGlobalContext } from "../lib/MoviesContext";
+import { useMoives } from "../../lib/MoviesContext";
 import { NavLink } from "react-router-dom";
 import { FaSearch, FaAlignRight, FaTimes } from "react-icons/fa";
-import "./styles/navbar.css";
+import "./style/navbar.css";
 
 const Header = () => {
   const {
@@ -13,7 +13,7 @@ const Header = () => {
     searchQuery,
     setSearchQuery,
     handleSearch,
-  } = useGlobalContext();
+  } = useMoives();
 
   const [isNavCollapsed, setIsNavCollapsed] = useState(true);
 

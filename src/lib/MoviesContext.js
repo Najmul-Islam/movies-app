@@ -1,11 +1,14 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, createContext } from "react";
 import { useHistory } from "react-router-dom";
 import { paginate } from "../utils/paginate";
-import _ from "lodash";
 
-const TypeContext = React.createContext();
+// url endpoint
+const movies_url = process.env.REACT_APP_MOVIES_API;
+const genres_url = process.env.REACT_APP_GENRES_API;
 
-const AppProvider = ({ children }) => {
+const MoviesContext = createContext();
+
+const MovieProvider = ({ children }) => {
   const [allMovies, setAllMovies] = useState([]);
   const [allDefaultMovies, setAllDefaultMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -27,7 +30,7 @@ const AppProvider = ({ children }) => {
 
   const fetchMovies = () => {
     setIsLoading(true);
-    fetch("http://localhost:1337/movies?_sort=id:DESC")
+    fetch(movies_url)
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -37,6 +40,7 @@ const AppProvider = ({ children }) => {
       })
       .then((movies) => {
         setAllMovies(movies);
+        // console.log(movies);
         setAllDefaultMovies(movies);
         setIsLoading(false);
       })
@@ -45,43 +49,8 @@ const AppProvider = ({ children }) => {
       });
   };
 
-  const getTypes = () => {
-    fetch("http://localhost:1337/types")
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error(response.statusText);
-        }
-      })
-      .then((types) => {
-        setTypes(types);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const getCategories = () => {
-    fetch("http://localhost:1337/categories")
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error(response.statusText);
-        }
-      })
-      .then((categories) => {
-        setCategories(categories);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   const getGenres = () => {
-    // fetch("http://localhost:1337/genres?_sort=genre:ASC")
-    fetch("http://localhost:1337/genres")
+    fetch(genres_url)
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -99,8 +68,6 @@ const AppProvider = ({ children }) => {
 
   useEffect(() => {
     fetchMovies();
-    getTypes();
-    getCategories();
     getGenres();
   }, []);
 
@@ -108,25 +75,10 @@ const AppProvider = ({ children }) => {
     setCurrentPage(page);
   };
 
-  const handleTypeSelect = (type) => {
-    setAllMovies(type.movies);
-    setCurrentPage(1);
-  };
-
-  const handleCategorieSelect = (category) => {
-    setAllMovies(category.movies);
-    setCurrentPage(1);
-  };
-
   const handleGenreSelect = (genre) => {
-    const genreMaps = allDefaultMovies.map((movie) => {
-      const genreFilterd = movie.genres.filter((genre) => genre.genre);
-      return genreFilterd;
-    });
-    if (genreMaps === genre.genre) {
-      setAllMovies(genres.movies);
-    }
-    console.log(genreMaps);
+    console.log(genre);
+    setAllMovies(genre.movies);
+    setCurrentPage(1);
   };
 
   const handleSearch = (e) => {
@@ -143,7 +95,7 @@ const AppProvider = ({ children }) => {
   let movies = paginate(allMovies, currentPage, pageSize);
 
   return (
-    <TypeContext.Provider
+    <MoviesContext.Provider
       value={{
         movies,
         allMovies,
@@ -164,19 +116,17 @@ const AppProvider = ({ children }) => {
         searchQuery,
         setSearchQuery,
         handlePageChange,
-        handleCategorieSelect,
-        handleTypeSelect,
         handleGenreSelect,
         handleSearch,
       }}
     >
       {children}
-    </TypeContext.Provider>
+    </MoviesContext.Provider>
   );
 };
 
-export const useGlobalContext = () => {
-  return useContext(TypeContext);
+export const useMoives = () => {
+  return useContext(MoviesContext);
 };
 
-export { TypeContext, AppProvider };
+export { MoviesContext, MovieProvider };

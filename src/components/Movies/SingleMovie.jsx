@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 
+// url endpoint
+const movies_url = process.env.REACT_APP_MOVIES_API;
+
 const SingleMovie = () => {
   const [singleMovie, setSingleMovie] = useState({});
+  const [genres, setGenres] = useState([]);
   const params = useParams();
   const history = useHistory();
 
   const getParams = () => {
-    fetch(`http://localhost:1337/movies/${params.id}`)
+    fetch(`${movies_url}/${params._id}`)
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -15,8 +19,10 @@ const SingleMovie = () => {
           throw new Error(response.statusText);
         }
       })
-      .then((singleMovie) => {
-        setSingleMovie(singleMovie);
+      .then((movie) => {
+        setSingleMovie(movie);
+        const genres = movie.genres;
+        setGenres(genres);
       })
       .catch((error) => {
         console.log(error);
@@ -25,57 +31,38 @@ const SingleMovie = () => {
 
   useEffect(() => {
     getParams();
-  }, []);
-
-  // <button onClick={() => history.goBack()} className="btn btn-primary"></button>
+  }, [params]);
 
   console.log(singleMovie);
   return (
     <>
+      <button onClick={() => history.goBack()} className="btn btn-primary">
+        Back
+      </button>
       <div className="row">
         <div className="col-5 col-md-4">
           <img
             className="img-fluid"
-            src={singleMovie.image}
+            src={singleMovie.poster}
             alt={singleMovie.title}
           />
         </div>
         <div className="col-7 col-md-8">
           <h3>{singleMovie.title}</h3>
-          <h5>
-            Year: <Link>{singleMovie.year}</Link>
-          </h5>
-          <h6>
-            Translators:
-            <Link>
-              {singleMovie.translators.map((translator) => (
-                <span>{translator.name}</span>
-              ))}
-            </Link>
-          </h6>
-          <h6>
-            Genres:
-            <Link>
-              {singleMovie.genres.map((genre) => (
-                <span>{genre.genre}</span>
-              ))}
-            </Link>
-          </h6>
+          <h5>Year: {singleMovie.year}</h5>
 
-          <h6>
-            Language:
-            <Link>
-              {singleMovie.languages.map((language) => (
-                <span>{language.language}</span>
-              ))}
-            </Link>
-          </h6>
+          <h5>
+            Genre:{" "}
+            {genres.map((genre) => (
+              <span key={genre._id}>{genre.genre}</span>
+            ))}
+          </h5>
         </div>
       </div>
 
       <div className="row">
         <div className="col-md-12 py-5">
-          <p>{singleMovie.description}</p>
+          <p>{singleMovie.desc}</p>
         </div>
       </div>
     </>

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { BiChevronRight } from "react-icons/bi";
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
-import "./styles/footer.css";
+import "./style/footer.css";
 
 const Footer = () => {
   return (

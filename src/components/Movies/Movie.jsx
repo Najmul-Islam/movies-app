@@ -7,11 +7,11 @@ import "./style/movie.css";
 const Movie = ({ movie }) => {
   return (
     <div className="movie">
-      <NavLink to={`movie/${movie.id}`} style={{ textDecoration: "none" }}>
+      <NavLink to={`movie/${movie._id}`} style={{ textDecoration: "none" }}>
         <div className="img__container">
           <img
             className="movie__img img-fluid"
-            src={movie.image}
+            src={movie.poster}
             alt={movie.title}
           />
           <div className="img__overley">

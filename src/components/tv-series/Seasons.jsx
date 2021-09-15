@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
+const tv_url = process.env.REACT_APP_TV_API;
 
 const Seasons = () => {
   const [singleSeries, setSingleSeries] = useState({});
-  const [seassons, setSeasssons] = useState([]);
+  const [seasons, setSeasons] = useState([]);
 
   const params = useParams();
 
   const getParams = () => {
-    fetch(`http://localhost:1337/tv-series/${params.id}`)
+    fetch(`${tv_url}/${params._id}`)
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -18,8 +19,8 @@ const Seasons = () => {
       })
       .then((singleSeries) => {
         setSingleSeries(singleSeries);
-        const seassons = singleSeries.seasons;
-        setSeasssons(seassons);
+        const seasons = singleSeries.seasons;
+        setSeasons(seasons);
       })
       .catch((error) => {
         console.log(error);
@@ -30,15 +31,14 @@ const Seasons = () => {
     getParams();
   }, [params]);
 
-  console.log(seassons);
-
   return (
     <>
       <h1>{singleSeries.title}</h1>
-      {seassons.map((seasson) => (
-        <ul>
-          <Link key={seasson.id}>
-            <li>{seasson.season_number}</li>
+      {seasons.map((season) => (
+        <ul key={season._id}>
+          <Link to={`/tv-series/seasson/${season._id}`}>
+            <li>{season.title}</li>
+            <li>{console.log(season)}</li>
           </Link>
         </ul>
       ))}

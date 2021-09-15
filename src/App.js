@@ -13,26 +13,20 @@ import ContactUs from "./pages/Others/ContactUs";
 import PrivacyPolicy from "./pages/Others/PrivacyPolicy";
 import TermsCondition from "./pages/Others/TermsCondition";
 import NotFound from "./pages/Others/NotFound";
-import Header from "./components/header";
-import Footer from "./components/Footer";
-
-import { AppProvider } from "./lib/MoviesContext";
+import Header from "./components/common/header";
+import Footer from "./components/common/Footer";
 
 function App() {
   return (
-    <AppProvider>
+    <>
       <Header />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/movies" component={MoviesPage} />
-        <Route exact path="/movie/:id" component={SingleMoviePage} />
+        <Route exact path="/movie/:_id" component={SingleMoviePage} />
         <Route exact path="/tv-series" component={TvSeriesPage} />
-        <Route exact path="/tv-series/:id" component={SeasonsPage} />
-        <Route
-          exact
-          path="/tv-series/:seasons/:episode"
-          component={EpisodesPage}
-        />
+        <Route exact path="/tv-series/:_id" component={SeasonsPage} />
+        <Route exact path="/tv-series/seasson/:_id" component={EpisodesPage} />
         <Route exact path="/blog" component={BlogPage} />
         <Route exact path="/about-us" component={About} />
         <Route exact path="/contact-us" component={ContactUs} />
@@ -41,7 +35,7 @@ function App() {
         <Route component={NotFound} />
       </Switch>
       <Footer />
-    </AppProvider>
+    </>
   );
 }
 

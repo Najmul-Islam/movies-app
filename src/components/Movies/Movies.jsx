@@ -1,9 +1,9 @@
 import React from "react";
-import { useGlobalContext } from "../../lib/MoviesContext";
+import { useMoives } from "../../lib/MoviesContext";
 import Movie from "./Movie";
-import Sidebar from "../Sidebar";
+import Sidebar from "../common/Sidebar";
 import Pagination from "../common/Pagination";
-import Loading from "../Loading";
+import Loading from "../common/Loading";
 import "./style/movies.css";
 
 const Movies = () => {
@@ -20,7 +20,7 @@ const Movies = () => {
     handlePageChange,
     handleCategorieSelect,
     handleGenreSelect,
-  } = useGlobalContext();
+  } = useMoives();
 
   if (isLoading) {
     return <Loading />;
@@ -35,7 +35,7 @@ const Movies = () => {
       <div className="row">
         <div className="col-12 col-xl-10 col-md-9 p-5 movies__item">
           {movies.map((movie) => {
-            return <Movie key={movie.id} movie={movie} />;
+            return <Movie key={movie._id} movie={movie} />;
           })}
         </div>
 

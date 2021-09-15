@@ -1,5 +1,5 @@
 import React from "react";
-import Seasons from "../../components/Tvseries/Seasons";
+import Seasons from "../../components/tv-series/Seasons";
 
 const SeasonsPage = () => {
   return (

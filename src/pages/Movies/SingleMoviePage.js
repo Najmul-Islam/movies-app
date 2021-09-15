@@ -1,4 +1,4 @@
-import SingleMovie from "../../components/Movies/SingleMovie";
+import SingleMovie from "../../components/movies/SingleMovie";
 import "./style/singleMovies.css";
 
 const SingleMoviePage = () => {

@@ -1,12 +1,12 @@
 import React from "react";
-import { useGlobalContext } from "../lib/MoviesContext";
+import { useMoives } from "../../lib/MoviesContext";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
-import "./styles/catergory.css";
+import "./style/catergory.css";
 
 const Category = () => {
-  const { genres, handleGenreSelect } = useGlobalContext();
+  const { genres, handleGenreSelect } = useMoives();
 
   const options = {
     responsiveClass: true,

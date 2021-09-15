@@ -1,12 +1,14 @@
 import React from "react";
 import { FaAngleDoubleRight } from "react-icons/fa";
-import { genres } from "../services/genres";
-import "./styles/sidebar.css";
+// import { genres } from "../../services/genres";
+import { useMoives } from "../../lib/MoviesContext";
+import "./style/sidebar.css";
 
 const Sidebar = ({ categories, onCategorieSelect, onGenreSelect }) => {
+  const { genres, handleGenreSelect } = useMoives();
   return (
     <div className="sidebar bg__dark border__left">
-      <div className="sidebar__nav mt-4 border__bottom">
+      {/* <div className="sidebar__nav mt-4 border__bottom">
         <h5>Navigation</h5>
         <ul className="nav flex-column">
           {categories.map((category) => (
@@ -20,15 +22,16 @@ const Sidebar = ({ categories, onCategorieSelect, onGenreSelect }) => {
             </li>
           ))}
         </ul>
-      </div>
+      </div> */}
 
+      {/* Genres */}
       <div className="sidebar__nav mt-4 border__bottom">
         <h5>Genres</h5>
         <ul className="nav flex-column sidebar__genres">
           {genres.map((genre) => (
             <li key={genre.id} className="nav-item">
               <span
-                onClick={() => onGenreSelect(genre)}
+                onClick={() => handleGenreSelect(genre)}
                 className="nav-link cursor__pointer sidebar__link"
               >
                 <FaAngleDoubleRight /> {genre.genre}
