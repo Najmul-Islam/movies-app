@@ -1,7 +1,7 @@
 import React, { useState, useEffect, createContext, useContext } from "react";
 
 // url endpoint
-const tv_url = process.env.REACT_APP_TV_API;
+const tv_seasons_api = process.env.REACT_APP_TV_SEASONS_API;
 
 // context
 const TvContext = createContext();
@@ -10,7 +10,7 @@ export const TvProvider = ({ children }) => {
   const [series, setSeries] = useState([]);
 
   const fetchSeries = () => {
-    fetch(tv_url)
+    fetch(tv_seasons_api)
       .then((response) => {
         if (response.ok) {
           return response.json();

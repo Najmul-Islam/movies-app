@@ -4,9 +4,10 @@ import "./App.css";
 import Home from "./pages/Home";
 import MoviesPage from "./pages/Movies/MoviesPage";
 import SingleMoviePage from "./pages/Movies/SingleMoviePage";
-import TvSeriesPage from "./pages/TvSeries/TvSeriesPage";
+import TvSeasonsPage from "./pages/TvSeries/TvSeasonsPage";
 import SeasonsPage from "./pages/TvSeries/SeasonsPage";
 import EpisodesPage from "./pages/TvSeries/EpisodesPage";
+import SingleEpisodePage from "./pages/TvSeries/SingleEpisodePage";
 import BlogPage from "./pages/Blog/BlogPage";
 import About from "./pages/Others/About";
 import ContactUs from "./pages/Others/ContactUs";
@@ -24,9 +25,13 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/movies" component={MoviesPage} />
         <Route exact path="/movie/:_id" component={SingleMoviePage} />
-        <Route exact path="/tv-series" component={TvSeriesPage} />
-        <Route exact path="/tv-series/:_id" component={SeasonsPage} />
-        <Route exact path="/tv-series/seasson/:_id" component={EpisodesPage} />
+        <Route exact path="/tv-series" component={TvSeasonsPage} />
+        <Route exact path="/tv-series/:_id" component={EpisodesPage} />
+        <Route
+          exact
+          path="/tv-series/episodes/:_id"
+          component={SingleEpisodePage}
+        />
         <Route exact path="/blog" component={BlogPage} />
         <Route exact path="/about-us" component={About} />
         <Route exact path="/contact-us" component={ContactUs} />
