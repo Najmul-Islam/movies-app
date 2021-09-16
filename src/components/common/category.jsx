@@ -1,5 +1,5 @@
 import React from "react";
-import { useMoives } from "../../lib/MoviesContext";
+import { useMoives } from "../../context/MoviesContext";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";

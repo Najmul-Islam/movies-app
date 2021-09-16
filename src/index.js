@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { MovieProvider } from "./lib/MoviesContext";
-import { TvProvider } from "./lib/TvContext";
+import { MovieProvider } from "./context/MoviesContext";
+import { TvProvider } from "./context/TvContext";
 import { BrowserRouter } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";

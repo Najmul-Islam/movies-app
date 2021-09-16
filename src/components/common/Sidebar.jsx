@@ -1,7 +1,7 @@
 import React from "react";
 import { FaAngleDoubleRight } from "react-icons/fa";
 // import { genres } from "../../services/genres";
-import { useMoives } from "../../lib/MoviesContext";
+import { useMoives } from "../../context/MoviesContext";
 import "./style/sidebar.css";
 
 const Sidebar = ({ categories, onCategorieSelect, onGenreSelect }) => {

@@ -1,5 +1,5 @@
 import React from "react";
-import { useMoives } from "../../lib/MoviesContext";
+import { useMoives } from "../../context/MoviesContext";
 import Movie from "./Movie";
 import Sidebar from "../common/Sidebar";
 import Pagination from "../common/Pagination";

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useTv } from "../../lib/TvContext";
+import { useTv } from "../../context/TvContext";
 import { Link } from "react-router-dom";
 
 const TvSeasons = () => {
@@ -8,6 +8,7 @@ const TvSeasons = () => {
 
   return (
     <div>
+      <h1>Tv Seasons</h1>
       <ul className="list-group">
         {series.map((singleSeries) => (
           <Link key={singleSeries.id} to={`tv-series/${singleSeries._id}`}>

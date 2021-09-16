@@ -2,13 +2,16 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
+// Movies Route
 import MoviesPage from "./pages/Movies/MoviesPage";
 import SingleMoviePage from "./pages/Movies/SingleMoviePage";
+// Tv seasons Route
 import TvSeasonsPage from "./pages/TvSeries/TvSeasonsPage";
-import SeasonsPage from "./pages/TvSeries/SeasonsPage";
 import EpisodesPage from "./pages/TvSeries/EpisodesPage";
 import SingleEpisodePage from "./pages/TvSeries/SingleEpisodePage";
+// Blog Route
 import BlogPage from "./pages/Blog/BlogPage";
+// Others Route
 import About from "./pages/Others/About";
 import ContactUs from "./pages/Others/ContactUs";
 import PrivacyPolicy from "./pages/Others/PrivacyPolicy";
