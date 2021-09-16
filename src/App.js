@@ -25,8 +25,8 @@ function App() {
         <Route exact path="/movies" component={MoviesPage} />
         <Route exact path="/movie/:_id" component={SingleMoviePage} />
         <Route exact path="/tv-series" component={TvSeriesPage} />
-        <Route exact path="/tv-series/:_id" component={SeasonsPage} />
-        <Route exact path="/tv-series/seasson/:_id" component={EpisodesPage} />
+        <Route exact path="/tv-series/:id" component={SeasonsPage} />
+        <Route exact path="/tv-series/seasson/:id" component={EpisodesPage} />
         <Route exact path="/blog" component={BlogPage} />
         <Route exact path="/about-us" component={About} />
         <Route exact path="/contact-us" component={ContactUs} />

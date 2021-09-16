@@ -1,10 +1,11 @@
-import SingleMovie from "../../components/movies/SingleMovie";
+// import SingleMovie from "../../components/movies/SingleMovie";
 import "./style/singleMovies.css";
 
 const SingleMoviePage = () => {
   return (
     <div className="container py-5 singlemovie">
-      <SingleMovie />
+      {/* <SingleMovie /> */}
+      <h1>singlemovie page</h1>
     </div>
   );
 };

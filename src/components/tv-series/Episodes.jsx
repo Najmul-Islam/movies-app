@@ -8,7 +8,7 @@ const Episodes = () => {
   const params = useParams();
 
   const getParams = () => {
-    fetch(`${seasons_url}/${params._id}`)
+    fetch(`${seasons_url}/${params.id}`)
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -18,7 +18,6 @@ const Episodes = () => {
       })
       .then((seasons) => {
         setSingleSeason(seasons);
-        console.log(seasons.tvs);
       })
       .catch((error) => {
         console.log(error);

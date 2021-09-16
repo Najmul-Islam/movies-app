@@ -1,11 +1,12 @@
 import React from "react";
-import Movies from "../../components/movies/Movies";
+// import Movies from "../../components/movies/Movies";
 
 const MoviesPage = () => {
   return (
     <div className="container-fluid">
       <div className="border__right">
-        <Movies />
+        <h1>Move page</h1>
+        {/* <Movies /> */}
       </div>
     </div>
   );

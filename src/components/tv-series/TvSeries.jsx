@@ -9,7 +9,7 @@ const TvSeries = () => {
     <div>
       <ul className="list-group">
         {series.map((singleSeries) => (
-          <Link key={singleSeries.id} to={`tv-series/${singleSeries._id}`}>
+          <Link key={singleSeries.id} to={`tv-series/${singleSeries.id}`}>
             <li className="list-group-item">{singleSeries.title}</li>
           </Link>
         ))}

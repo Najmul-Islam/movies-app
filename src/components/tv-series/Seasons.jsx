@@ -9,7 +9,7 @@ const Seasons = () => {
   const params = useParams();
 
   const getParams = () => {
-    fetch(`${tv_url}/${params._id}`)
+    fetch(`${tv_url}/${params.id}`)
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -30,14 +30,14 @@ const Seasons = () => {
   useEffect(() => {
     getParams();
   }, [params]);
-
+  console.log(seasons);
   return (
     <>
       <h1>{singleSeries.title}</h1>
       {seasons.map((season) => (
-        <ul key={season._id}>
-          <Link to={`/tv-series/seasson/${season._id}`}>
-            <li>{season.title}</li>
+        <ul key={season.id}>
+          <Link to={`/tv-series/seasson/${season.id}`}>
+            <li>{season.seasons}</li>
             <li>{console.log(season)}</li>
           </Link>
         </ul>
