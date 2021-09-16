@@ -17,7 +17,8 @@ import ContactUs from "./pages/Others/ContactUs";
 import PrivacyPolicy from "./pages/Others/PrivacyPolicy";
 import TermsCondition from "./pages/Others/TermsCondition";
 import NotFound from "./pages/Others/NotFound";
-import Header from "./components/common/header";
+
+import Header from "./components/header/Header";
 import Footer from "./components/common/Footer";
 
 function App() {

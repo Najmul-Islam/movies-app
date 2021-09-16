@@ -1,7 +1,7 @@
 import React from "react";
 import Headroom from "react-headroom";
 import Navbar from "./Navbar";
-import Category from "./category";
+import Category from "../common/category";
 
 const Header = () => {
   return (

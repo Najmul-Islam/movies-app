@@ -1,8 +1,8 @@
 import React from "react";
 import { useMoives } from "../../context/MoviesContext";
 import Movie from "./Movie";
-import Sidebar from "../common/Sidebar";
-import Pagination from "../common/Pagination";
+import Sidebar from "../sidebar/Sidebar";
+import Pagination from "../pagination/Pagination";
 import Loading from "../common/Loading";
 import "./style/movies.css";
 

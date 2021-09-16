@@ -76,7 +76,6 @@ const MovieProvider = ({ children }) => {
   };
 
   const handleGenreSelect = (genre) => {
-    console.log(genre);
     setAllMovies(genre.movies);
     setCurrentPage(1);
   };
