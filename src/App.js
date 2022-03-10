@@ -5,6 +5,8 @@ import Home from "./pages/Home";
 // Movies Route
 import MoviesPage from "./pages/Movies/MoviesPage";
 import SingleMoviePage from "./pages/Movies/SingleMoviePage";
+// Genres Route
+import GenresPage from "./pages/genres/GenresPage";
 // Tv seasons Route
 import TvSeasonsPage from "./pages/TvSeries/TvSeasonsPage";
 import EpisodesPage from "./pages/TvSeries/EpisodesPage";
@@ -27,17 +29,21 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/movies" element={<MoviesPage />} />
+        <Route path="/movies" element={<MoviesPage />}>
+          <Route path="/movies" element={<MoviesPage />} />
+          <Route path="genres/:_id" element={<GenresPage />} />
+        </Route>
         <Route path="/movies/:_id" element={<SingleMoviePage />} />
         <Route path="/tv-series" element={<TvSeasonsPage />} />
         <Route path="/tv-series/:_id" element={<EpisodesPage />} />
         <Route path="/tv-series/episode/:_id" element={<SingleEpisodePage />} />
+
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/about-us" element={<About />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/tarms-condition" element={<TermsCondition />} />
-        <Route element={<NotFound />} />
+        <Route path="/*" element={<NotFound />} />
       </Routes>
       <Footer />
     </>

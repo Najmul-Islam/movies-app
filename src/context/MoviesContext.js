@@ -77,7 +77,9 @@ const MovieProvider = ({ children }) => {
 
   const handleGenreSelect = (genre) => {
     setAllMovies(genre.movies);
+    console.log(genre);
     setCurrentPage(1);
+    navigate(`/movies/genres/${genre.genre.toLowerCase()}`);
   };
 
   const handleSearch = (e) => {

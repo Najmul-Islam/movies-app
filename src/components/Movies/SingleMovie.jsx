@@ -3,10 +3,12 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 
 // url endpoint
 const movies_url = process.env.REACT_APP_MOVIES_API;
+const media_url = process.env.REACT_APP_MEDIA_API;
 
 const SingleMovie = () => {
   const [singleMovie, setSingleMovie] = useState({});
   const [genres, setGenres] = useState([]);
+  const [mediaUrl, setMediaUrl] = useState("");
   const params = useParams();
   const navigate = useNavigate();
 
@@ -23,6 +25,7 @@ const SingleMovie = () => {
         setSingleMovie(movie);
         const genres = movie.genres;
         setGenres(genres);
+        setMediaUrl(movie.poster.formats.medium.url);
       })
       .catch((error) => {
         console.log(error);
@@ -33,7 +36,7 @@ const SingleMovie = () => {
     getParams();
   }, [params, navigate]);
 
-  console.log(singleMovie);
+  // console.log(singleMovie.poster.url);
   return (
     <>
       <button onClick={() => navigate(-1)} className="btn btn-primary">
@@ -43,7 +46,7 @@ const SingleMovie = () => {
         <div className="col-5 col-md-4">
           <img
             className="img-fluid"
-            src={singleMovie.poster}
+            src={`${media_url}${mediaUrl}`}
             alt={singleMovie.title}
           />
         </div>
@@ -52,7 +55,7 @@ const SingleMovie = () => {
           <h5>Year: {singleMovie.year}</h5>
 
           <h5>
-            Genre:{" "}
+            Genre:
             {genres.map((genre) => (
               <span key={genre._id}>{genre.genre}</span>
             ))}

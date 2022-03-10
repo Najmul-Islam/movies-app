@@ -1,4 +1,5 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 import Movies from "../../components/movies/Movies";
 
 const MoviesPage = () => {
