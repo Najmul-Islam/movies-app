@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext, createContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { paginate } from "../utils/paginate";
 
 // url endpoint
@@ -26,7 +26,7 @@ const MovieProvider = ({ children }) => {
 
   const [searchQuery, setSearchQuery] = useState("");
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const fetchMovies = () => {
     setIsLoading(true);
@@ -87,7 +87,7 @@ const MovieProvider = ({ children }) => {
     });
     setAllMovies(filtered);
     setCurrentPage(1);
-    history.push("/");
+    navigate("/");
     setSearchQuery("");
   };
 

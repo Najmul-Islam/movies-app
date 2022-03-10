@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Routes, Route, Outlet } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
 // Movies Route
@@ -25,24 +25,20 @@ function App() {
   return (
     <>
       <Header />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/movies" component={MoviesPage} />
-        <Route exact path="/movie/:_id" component={SingleMoviePage} />
-        <Route exact path="/tv-series" component={TvSeasonsPage} />
-        <Route exact path="/tv-series/:_id" component={EpisodesPage} />
-        <Route
-          exact
-          path="/tv-series/episodes/:_id"
-          component={SingleEpisodePage}
-        />
-        <Route exact path="/blog" component={BlogPage} />
-        <Route exact path="/about-us" component={About} />
-        <Route exact path="/contact-us" component={ContactUs} />
-        <Route exact path="/privacy-policy" component={PrivacyPolicy} />
-        <Route exact path="/tarms-condition" component={TermsCondition} />
-        <Route component={NotFound} />
-      </Switch>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/movies" element={<MoviesPage />} />
+        <Route path="/movies/:_id" element={<SingleMoviePage />} />
+        <Route path="/tv-series" element={<TvSeasonsPage />} />
+        <Route path="/tv-series/:_id" element={<EpisodesPage />} />
+        <Route path="/tv-series/episode/:_id" element={<SingleEpisodePage />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/about-us" element={<About />} />
+        <Route path="/contact-us" element={<ContactUs />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/tarms-condition" element={<TermsCondition />} />
+        <Route element={<NotFound />} />
+      </Routes>
       <Footer />
     </>
   );

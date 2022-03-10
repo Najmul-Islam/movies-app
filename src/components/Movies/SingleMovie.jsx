@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 // url endpoint
 const movies_url = process.env.REACT_APP_MOVIES_API;
@@ -8,7 +8,7 @@ const SingleMovie = () => {
   const [singleMovie, setSingleMovie] = useState({});
   const [genres, setGenres] = useState([]);
   const params = useParams();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const getParams = () => {
     fetch(`${movies_url}/${params._id}`)
@@ -31,12 +31,12 @@ const SingleMovie = () => {
 
   useEffect(() => {
     getParams();
-  }, [params]);
+  }, [params, navigate]);
 
   console.log(singleMovie);
   return (
     <>
-      <button onClick={() => history.goBack()} className="btn btn-primary">
+      <button onClick={() => navigate(-1)} className="btn btn-primary">
         Back
       </button>
       <div className="row">

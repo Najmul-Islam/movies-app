@@ -89,19 +89,19 @@ const Header = () => {
             ))} */}
 
             <li className="nav-item">
-              <NavLink exact to="/movies" className="nav-link mx-0 mx-md-2 ">
+              <NavLink to="/movies" className="nav-link mx-0 mx-md-2 ">
                 Movies
               </NavLink>
             </li>
 
             <li className="nav-item">
-              <NavLink exact to="/tv-series" className="nav-link mx-0 mx-md-2 ">
+              <NavLink to="/tv-series" className="nav-link mx-0 mx-md-2 ">
                 Tv-Series
               </NavLink>
             </li>
 
             <li className="nav-item">
-              <NavLink exact to="/blog" className="nav-link mx-0 mx-md-2 ">
+              <NavLink to="/blog" className="nav-link mx-0 mx-md-2 ">
                 Blog
               </NavLink>
             </li>
