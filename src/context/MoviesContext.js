@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext, createContext } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { paginate } from "../utils/paginate";
 
@@ -28,25 +29,16 @@ const MovieProvider = ({ children }) => {
 
   const navigate = useNavigate();
 
-  const fetchMovies = () => {
-    setIsLoading(true);
-    fetch(movies_url)
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error(response.statusText);
-        }
-      })
-      .then((movies) => {
-        setAllMovies(movies);
-        // console.log(movies);
-        setAllDefaultMovies(movies);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  const fetchMovies = async () => {
+    try {
+      setIsLoading(true);
+      const response = await axios.get(movies_url);
+      const movies = await response.data;
+      setAllMovies(movies);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const getGenres = () => {
@@ -73,13 +65,6 @@ const MovieProvider = ({ children }) => {
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
-  };
-
-  const handleGenreSelect = (genre) => {
-    setAllMovies(genre.movies);
-    console.log(genre);
-    setCurrentPage(1);
-    navigate(`/movies/genres/${genre.genre.toLowerCase()}`);
   };
 
   const handleSearch = (e) => {
@@ -117,7 +102,6 @@ const MovieProvider = ({ children }) => {
         searchQuery,
         setSearchQuery,
         handlePageChange,
-        handleGenreSelect,
         handleSearch,
       }}
     >

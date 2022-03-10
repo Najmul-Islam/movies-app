@@ -7,20 +7,7 @@ import Loading from "../common/Loading";
 import "./style/movies.css";
 
 const Movies = () => {
-  const {
-    movies,
-    allMovies,
-    isLoading,
-    currentPage,
-    pageSize,
-    categories,
-    selectedCategorie,
-    genres,
-    selectedGenre,
-    handlePageChange,
-    handleCategorieSelect,
-    handleGenreSelect,
-  } = useMoives();
+  const { movies, allMovies, isLoading } = useMoives();
 
   if (isLoading) {
     return <Loading />;
@@ -32,30 +19,10 @@ const Movies = () => {
 
   return (
     <>
-      <div className="row">
-        <div className="col-12 col-xl-10 col-md-9 p-5 movies__item">
-          {movies.map((movie) => {
-            return <Movie key={movie._id} movie={movie} />;
-          })}
-        </div>
-
-        <div className="col-xl-2 col-md-3 d-none d-md-block">
-          <Sidebar
-            categories={categories}
-            selectedCategorie={selectedCategorie}
-            onCategorieSelect={handleCategorieSelect}
-            genres={genres}
-            selectedGenre={selectedGenre}
-            onGenreSelect={handleGenreSelect}
-          />
-        </div>
-
-        <Pagination
-          itemsCount={allMovies.length}
-          pageSize={pageSize}
-          currentPage={currentPage}
-          onPageChange={handlePageChange}
-        />
+      <div className="col-12 col-xl-10 col-md-9 p-5 movies__item">
+        {movies.map((movie) => {
+          return <Movie key={movie._id} movie={movie} />;
+        })}
       </div>
     </>
   );

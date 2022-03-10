@@ -5,21 +5,9 @@ import { FaSearch, FaAlignRight, FaTimes } from "react-icons/fa";
 import "./style/navbar.css";
 
 const Header = () => {
-  const {
-    types,
-    categories,
-    handleTypeSelect,
-    handleCategorieSelect,
-    searchQuery,
-    setSearchQuery,
-    handleSearch,
-  } = useMoives();
+  const { searchQuery, setSearchQuery, handleSearch } = useMoives();
 
   const [isNavCollapsed, setIsNavCollapsed] = useState(true);
-
-  const capitalizeTxt = (txt) => {
-    return txt.charAt(0).toUpperCase() + txt.slice(1);
-  };
 
   const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
 
@@ -53,40 +41,12 @@ const Header = () => {
           className={`${isNavCollapsed ? "collapse" : ""} navbar-collapse`}
           id="navbarSupportedContent"
         >
-          {/* navlink */}
           <ul className="navbar-nav me-auto mb-2 mb-md-0">
-            {/* {categories.map((category) => {
-              return category.id === 3 ? (
-                <li key={category.id} className="nav-item">
-                  <NavLink
-                    to="/"
-                    onClick={() => handleCategorieSelect(category)}
-                    className="nav-link mx-0 mx-md-2"
-                  >
-                    {category.category}
-                  </NavLink>
-                </li>
-              ) : null;
-            })} */}
             <li className="nav-item">
               <NavLink exact to="/" className="nav-link mx-0 mx-md-2 ">
                 Home
               </NavLink>
             </li>
-
-            {/* {types.map((type) => (
-              <li
-                key={type.id}
-                onClick={() => handleTypeSelect(type)}
-                className="nav-item"
-              >
-                <NavLink to="/" className="nav-link mx-0 mx-md-2">
-                  Movies
-                </NavLink>
-              </li>
-
-
-            ))} */}
 
             <li className="nav-item">
               <NavLink to="/movies" className="nav-link mx-0 mx-md-2 ">

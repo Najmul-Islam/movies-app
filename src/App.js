@@ -1,8 +1,9 @@
 import React from "react";
-import { Routes, Route, Outlet } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
 // Movies Route
+import MoviesLayout from "./Layouts/MoviesLayout";
 import MoviesPage from "./pages/Movies/MoviesPage";
 import SingleMoviePage from "./pages/Movies/SingleMoviePage";
 // Genres Route
@@ -29,9 +30,9 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/movies" element={<MoviesPage />}>
+        <Route path="/movies" element={<MoviesLayout />}>
           <Route path="/movies" element={<MoviesPage />} />
-          <Route path="genres/:_id" element={<GenresPage />} />
+          <Route path="/movies/genres/:genre" element={<GenresPage />} />
         </Route>
         <Route path="/movies/:_id" element={<SingleMoviePage />} />
         <Route path="/tv-series" element={<TvSeasonsPage />} />
