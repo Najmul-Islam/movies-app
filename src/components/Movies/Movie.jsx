@@ -7,7 +7,6 @@ import "./style/movie.css";
 const media_url = process.env.REACT_APP_MEDIA_API;
 
 const Movie = ({ movie }) => {
-  console.log(movie.poster.formats);
   return (
     <div className="movie">
       <NavLink to={`/movies/${movie._id}`} style={{ textDecoration: "none" }}>

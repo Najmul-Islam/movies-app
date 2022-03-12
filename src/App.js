@@ -1,25 +1,24 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import "./App.css";
 import Home from "./pages/Home";
 // Movies Route
 import MoviesLayout from "./Layouts/MoviesLayout";
-import MoviesPage from "./pages/Movies/MoviesPage";
-import SingleMoviePage from "./pages/Movies/SingleMoviePage";
+import MoviesPage from "./pages/MoviesPage";
+import SingleMoviePage from "./pages/SingleMoviePage";
 // Genres Route
-import GenresPage from "./pages/genres/GenresPage";
+import GenresPage from "./pages/GenresPage";
 // Tv seasons Route
-import TvSeasonsPage from "./pages/TvSeries/TvSeasonsPage";
-import EpisodesPage from "./pages/TvSeries/EpisodesPage";
-import SingleEpisodePage from "./pages/TvSeries/SingleEpisodePage";
+import TvSeasonsPage from "./pages/TvSeasonsPage";
+import EpisodesPage from "./pages/EpisodesPage";
+import SingleEpisodePage from "./pages/SingleEpisodePage";
 // Blog Route
-import BlogPage from "./pages/Blog/BlogPage";
+import BlogPage from "./pages/BlogPage";
 // Others Route
-import About from "./pages/Others/About";
-import ContactUs from "./pages/Others/ContactUs";
-import PrivacyPolicy from "./pages/Others/PrivacyPolicy";
-import TermsCondition from "./pages/Others/TermsCondition";
-import NotFound from "./pages/Others/NotFound";
+import About from "./pages/About";
+import ContactUs from "./pages/ContactUs";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsCondition from "./pages/TermsCondition";
+import NotFound from "./pages/NotFound";
 
 import Header from "./components/header/Header";
 import Footer from "./components/common/Footer";

@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import { FaAngleDoubleRight } from "react-icons/fa";
 import { useGenres } from "../../context/GenresContext";
 import "./style/sidebar.css";
@@ -13,12 +14,14 @@ const Sidebar = () => {
         <ul className="nav flex-column sidebar__genres">
           {genres.map((genre) => (
             <li key={genre.id} className="nav-item">
-              <span
-                onClick={() => handleGenreSelect(genre)}
-                className="nav-link cursor__pointer sidebar__link"
-              >
-                <FaAngleDoubleRight /> {genre.genre}
-              </span>
+              <NavLink to={`/movies/genres/${genre.genre.toLowerCase()}`}>
+                <span
+                  onClick={() => handleGenreSelect(genre)}
+                  className="nav-link cursor__pointer sidebar__link"
+                >
+                  <FaAngleDoubleRight /> {genre.genre}
+                </span>
+              </NavLink>
             </li>
           ))}
         </ul>

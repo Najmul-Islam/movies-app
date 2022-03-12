@@ -33,7 +33,7 @@ const MovieProvider = ({ children }) => {
     try {
       setIsLoading(true);
       const response = await axios.get(movies_url);
-      const movies = await response.data;
+      const movies = response.data;
       setAllMovies(movies);
       setIsLoading(false);
     } catch (error) {
