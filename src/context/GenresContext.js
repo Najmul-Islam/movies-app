@@ -1,5 +1,6 @@
 import React, { useState, useEffect, createContext, useContext } from "react";
 import axios from "axios";
+
 // url endpoint
 const genres_api = process.env.REACT_APP_GENRES_API;
 
@@ -8,9 +9,10 @@ const GenresContext = createContext();
 
 export const GenresProvider = ({ children }) => {
   const [genreMovies, setGenreMovies] = useState([]);
+  const [genreName, setGenreName] = useState("");
   const [genres, setGenres] = useState([]);
 
-  const fetchSeries = async () => {
+  const getGenres = async () => {
     try {
       const response = await axios.get(genres_api);
       const genres = await response.data;
@@ -21,17 +23,22 @@ export const GenresProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    fetchSeries();
+    getGenres();
   }, []);
 
   const handleGenreSelect = (genre) => {
     setGenreMovies(genre.movies);
-    console.log(genreMovies);
-    // console.log(genre);
-    // setCurrentPage(1);
-    // navigate(`/movies/genres/${genre.genre.toLowerCase()}`);
+    setGenreName(genre.genre);
+    window.localStorage.setItem("genreMovies", JSON.stringify(genre.movies));
+    window.localStorage.setItem("genreName", JSON.stringify(genre.genre));
   };
 
+  useEffect(() => {
+    const genreMovies = window.localStorage.getItem("genreMovies");
+    const genreName = window.localStorage.getItem("genreName");
+    setGenreMovies(JSON.parse(genreMovies));
+    setGenreName(JSON.parse(genreName));
+  }, []);
   return (
     <GenresContext.Provider
       value={{
@@ -40,6 +47,7 @@ export const GenresProvider = ({ children }) => {
         handleGenreSelect,
         genreMovies,
         setGenreMovies,
+        genreName,
       }}
     >
       {children}

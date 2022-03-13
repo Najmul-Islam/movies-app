@@ -1,48 +1,40 @@
-.owl-container {
-  position: relative;
-  padding: 10px 0;
+/* import { FaArrowRight, } from "react-icons/fa"; */
+
+[data-arrow="left"] > button {
+  background: url(https://cdn.dsmcdn.com/web/production/slick-arrow.svg)
+    no-repeat center;
+  padding: 25px;
+  margin-top: -13px;
+  background-color: black;
+  border: none;
+  cursor: pointer;
+  height: 40px;
+  left: -35px;
+  outline: 0;
+  position: absolute;
+  -webkit-transform: rotate(180deg) scale(0.5);
+  transform: rotate(180deg) scale(0.5);
+}
+
+[data-arrow="right"] > button {
+  background: url(https://cdn.dsmcdn.com/web/production/slick-arrow.svg)
+    no-repeat center;
+  padding: 25px;
+  margin-top: -13px;
+  background-color: black;
+  right: -15px;
+  border: none;
+  cursor: pointer;
+  outline: 0;
+  position: absolute;
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
 }
 .category {
+  margin: 10px 5px 10px 5px;
   font-size: 12px;
   font-weight: 500;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(235, 202, 202, 0.1);
   padding: 5px 10px;
   border-radius: 10px;
-}
-/* .category:hover {
-  color: #000 !important;
-  border-bottom: 2px solid #000;
-  cursor: pointer;
-} */
-.owl-nav {
-  position: absolute;
-  right: 0px;
-  top: 0;
-  width: 80px;
-  border-radius: 30px;
-  padding: 6px 10px;
-  display: flex;
-  justify-content: space-between;
-  background-color: rgb(255, 255, 255);
-  box-shadow: rgb(0 0 0 / 10%) 0px 0px 10px 0px;
-}
-.owl-nav::after {
-  content: "";
-  position: absolute;
-  width: 1px;
-  height: 18px;
-  background-color: rgba(0, 0, 0, 0.514);
-  margin-top: 7px;
-  margin-left: 29px;
-}
-
-.prev-btn,
-.next-btn {
-  font-size: 20px;
-}
-
-@media only screen and (max-width: 768px) {
-  .owl-nav {
-    display: none;
-  }
 }

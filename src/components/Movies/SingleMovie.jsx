@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-
+import axios from "axios";
 // url endpoint
 const movies_url = process.env.REACT_APP_MOVIES_API;
 const media_url = process.env.REACT_APP_MEDIA_API;
@@ -12,31 +12,24 @@ const SingleMovie = () => {
   const params = useParams();
   const navigate = useNavigate();
 
-  const getParams = () => {
-    fetch(`${movies_url}/${params._id}`)
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error(response.statusText);
-        }
-      })
-      .then((movie) => {
-        setSingleMovie(movie);
-        const genres = movie.genres;
-        setGenres(genres);
-        setMediaUrl(movie.poster.formats.medium.url);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  const getParams = async () => {
+    try {
+      const response = await axios.get(`${movies_url}/${params._id}`);
+      const movie = await response.data;
+      setSingleMovie(movie);
+      const genres = await movie.genres;
+      setGenres(genres);
+
+      setMediaUrl(movie.poster.url);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
     getParams();
   }, [params, navigate]);
 
-  // console.log(singleMovie.poster.url);
   return (
     <>
       <button onClick={() => navigate(-1)} className="btn btn-primary">

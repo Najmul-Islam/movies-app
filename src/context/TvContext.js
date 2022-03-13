@@ -1,5 +1,5 @@
 import React, { useState, useEffect, createContext, useContext } from "react";
-
+import axios from "axios";
 // url endpoint
 const tv_seasons_api = process.env.REACT_APP_TV_SEASONS_API;
 
@@ -9,21 +9,14 @@ const TvContext = createContext();
 export const TvProvider = ({ children }) => {
   const [series, setSeries] = useState([]);
 
-  const fetchSeries = () => {
-    fetch(tv_seasons_api)
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error(response.statusText);
-        }
-      })
-      .then((series) => {
-        setSeries(series);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  const fetchSeries = async () => {
+    try {
+      const response = await axios.get(tv_seasons_api);
+      const series = await response.data;
+      setSeries(series);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {

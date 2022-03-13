@@ -5,7 +5,6 @@ import { paginate } from "../utils/paginate";
 
 // url endpoint
 const movies_url = process.env.REACT_APP_MOVIES_API;
-const genres_url = process.env.REACT_APP_GENRES_API;
 
 const MoviesContext = createContext();
 
@@ -22,14 +21,11 @@ const MovieProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
   const [selectedCategorie, setSelectedCategorie] = useState([]);
 
-  const [genres, setGenres] = useState([]);
-  const [selectedGenre, setSelectedGenre] = useState([]);
-
   const [searchQuery, setSearchQuery] = useState("");
 
   const navigate = useNavigate();
 
-  const fetchMovies = async () => {
+  const getMovies = async () => {
     try {
       setIsLoading(true);
       const response = await axios.get(movies_url);
@@ -41,26 +37,8 @@ const MovieProvider = ({ children }) => {
     }
   };
 
-  const getGenres = () => {
-    fetch(genres_url)
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error(response.statusText);
-        }
-      })
-      .then((genres) => {
-        setGenres(genres);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   useEffect(() => {
-    fetchMovies();
-    getGenres();
+    getMovies();
   }, []);
 
   const handlePageChange = (page) => {
@@ -95,8 +73,6 @@ const MovieProvider = ({ children }) => {
         setTypes,
         categories,
         setCategories,
-        genres,
-        selectedGenre,
         selectedCategorie,
         setSelectedCategorie,
         searchQuery,

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 const episodes_api = process.env.REACT_APP_EPISODES_API;
 
@@ -7,22 +8,14 @@ const SingleEpisode = () => {
   const params = useParams();
   const navigate = useNavigate();
 
-  const getParams = () => {
-    fetch(`${episodes_api}/${params._id}`)
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error(response.statusText);
-        }
-      })
-      .then((episode) => {
-        setSingleEpisode(episode);
-        console.log(episode);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  const getParams = async () => {
+    try {
+      const response = await axios.get(`${episodes_api}/${params._id}`);
+      const episode = await response.data;
+      setSingleEpisode(episode);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {

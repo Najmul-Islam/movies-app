@@ -22,27 +22,29 @@ const MoviesLayout = () => {
   return (
     <>
       <div className="container-fluid">
-        <div className="border__right">
-          <div className="row">
+        <div className="row">
+          <div className="col-xl-10 col-md-9">
             <Outlet />
-            <div className="col-xl-2 col-md-3 d-none d-md-block">
-              <Sidebar
-                categories={categories}
-                selectedCategorie={selectedCategorie}
-                onCategorieSelect={handleCategorieSelect}
-                genres={genres}
-                selectedGenre={selectedGenre}
-                onGenreSelect={handleGenreSelect}
-              />
-            </div>
-
-            <Pagination
-              itemsCount={allMovies.length}
-              pageSize={pageSize}
-              currentPage={currentPage}
-              onPageChange={handlePageChange}
+          </div>
+          <div className="col-xl-2 col-md-3 d-none d-md-block">
+            <Sidebar
+              categories={categories}
+              selectedCategorie={selectedCategorie}
+              onCategorieSelect={handleCategorieSelect}
+              genres={genres}
+              selectedGenre={selectedGenre}
+              onGenreSelect={handleGenreSelect}
             />
           </div>
+        </div>
+
+        <div className="row">
+          <Pagination
+            itemsCount={allMovies.length}
+            pageSize={pageSize}
+            currentPage={currentPage}
+            onPageChange={handlePageChange}
+          />
         </div>
       </div>
     </>

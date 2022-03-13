@@ -5,7 +5,6 @@ import { Link, useNavigate } from "react-router-dom";
 const TvSeasons = () => {
   const { series, setSeries } = useTv();
   const navigate = useNavigate();
-  console.log(series);
 
   return (
     <div>

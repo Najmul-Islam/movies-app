@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import { useParams, useNavigate } from "react-router-dom";
 const tv_seasons_api = process.env.REACT_APP_TV_SEASONS_API;
@@ -9,23 +10,17 @@ const Episodes = () => {
   const params = useParams();
   const navigate = useNavigate();
 
-  const getParams = () => {
-    fetch(`${tv_seasons_api}/${params._id}`)
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error(response.statusText);
-        }
-      })
-      .then((seasons) => {
-        setSingleSeason(seasons);
-        const episodes = seasons.episodes;
-        setEpisodes(episodes);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  const getParams = async () => {
+    try {
+      const response = await axios.get(`${tv_seasons_api}/${params._id}`);
+      const seasons = await response.data;
+
+      setSingleSeason(seasons);
+      const episodes = seasons.episodes;
+      setEpisodes(episodes);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
