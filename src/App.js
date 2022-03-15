@@ -5,9 +5,11 @@ import Home from "./pages/Home";
 import MoviesLayout from "./Layouts/MoviesLayout";
 import MoviesPage from "./pages/MoviesPage";
 import SingleMoviePage from "./pages/SingleMoviePage";
+import SearchMoviesPage from "./pages/SearchMoviesPage";
 // Genres Route
 import GenresPage from "./pages/GenresPage";
 // Tv seasons Route
+import TvLayout from "./Layouts/TvLayout";
 import TvSeasonsPage from "./pages/TvSeasonsPage";
 import EpisodesPage from "./pages/EpisodesPage";
 import SingleEpisodePage from "./pages/SingleEpisodePage";
@@ -31,12 +33,18 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<MoviesLayout />}>
           <Route path="/movies" element={<MoviesPage />} />
+          <Route path="/movies/search" element={<SearchMoviesPage />} />
           <Route path="/movies/genres/:genre" element={<GenresPage />} />
         </Route>
         <Route path="/movies/:_id" element={<SingleMoviePage />} />
-        <Route path="/tv-series" element={<TvSeasonsPage />} />
-        <Route path="/tv-series/:_id" element={<EpisodesPage />} />
-        <Route path="/tv-series/episode/:_id" element={<SingleEpisodePage />} />
+        <Route path="/tv-series" element={<TvLayout />}>
+          <Route path="/tv-series" element={<TvSeasonsPage />} />
+          <Route path="/tv-series/:_id" element={<EpisodesPage />} />
+          <Route
+            path="/tv-series/episode/:_id"
+            element={<SingleEpisodePage />}
+          />
+        </Route>
 
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/about-us" element={<About />} />

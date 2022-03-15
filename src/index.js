@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-
 // context api
 import { MovieProvider } from "./context/MoviesContext";
 import { GenresProvider } from "./context/GenresContext";

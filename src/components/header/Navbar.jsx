@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useMoives } from "../../context/MoviesContext";
+import { useMovies } from "../../context/MoviesContext";
 import { NavLink } from "react-router-dom";
 import { FaSearch, FaAlignRight, FaTimes } from "react-icons/fa";
 import "./style/navbar.css";
 
 const Header = () => {
-  const { searchQuery, setSearchQuery, handleSearch } = useMoives();
+  const { searchQuery, setSearchQuery, handleSearch } = useMovies();
 
   const [isNavCollapsed, setIsNavCollapsed] = useState(true);
 

@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext, createContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { paginate } from "../utils/paginate";
 
 // url endpoint
 const movies_url = process.env.REACT_APP_MOVIES_API;
@@ -9,18 +8,15 @@ const movies_url = process.env.REACT_APP_MOVIES_API;
 const MoviesContext = createContext();
 
 const MovieProvider = ({ children }) => {
+  // movies
   const [allMovies, setAllMovies] = useState([]);
   const [allDefaultMovies, setAllDefaultMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-
-  const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize, setPageSize] = useState(4);
-
-  const [types, setTypes] = useState([]);
-
-  const [categories, setCategories] = useState([]);
-  const [selectedCategorie, setSelectedCategorie] = useState([]);
-
+  // for react paginate
+  const [currentMovies, setCurrentMovies] = useState([]);
+  const [pageCount, setPageCount] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
+  // search
   const [searchQuery, setSearchQuery] = useState("");
 
   const navigate = useNavigate();
@@ -28,9 +24,10 @@ const MovieProvider = ({ children }) => {
   const getMovies = async () => {
     try {
       setIsLoading(true);
-      const response = await axios.get(movies_url);
+      const response = await axios.get(`${movies_url}`);
       const movies = response.data;
       setAllMovies(movies);
+      setAllDefaultMovies(movies);
       setIsLoading(false);
     } catch (error) {
       console.log(error);
@@ -41,44 +38,35 @@ const MovieProvider = ({ children }) => {
     getMovies();
   }, []);
 
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-  };
-
   const handleSearch = (e) => {
     e.preventDefault();
-    const filtered = allDefaultMovies.filter((movie) => {
+    const filtered = allMovies.filter((movie) => {
       return movie.title.toLowerCase().includes(searchQuery.toLowerCase());
     });
-    setAllMovies(filtered);
-    setCurrentPage(1);
-    navigate("/");
+    console.log(filtered);
+    setAllDefaultMovies(filtered);
+    navigate("movies/search");
     setSearchQuery("");
   };
-
-  let movies = paginate(allMovies, currentPage, pageSize);
 
   return (
     <MoviesContext.Provider
       value={{
-        movies,
         allMovies,
         setAllMovies,
+        allDefaultMovies,
+        setAllDefaultMovies,
+        currentMovies,
+        setCurrentMovies,
         isLoading,
         setIsLoading,
-        pageSize,
-        currentPage,
-        setCurrentPage,
-        types,
-        setTypes,
-        categories,
-        setCategories,
-        selectedCategorie,
-        setSelectedCategorie,
         searchQuery,
         setSearchQuery,
-        handlePageChange,
         handleSearch,
+        pageCount,
+        setPageCount,
+        itemOffset,
+        setItemOffset,
       }}
     >
       {children}
@@ -86,7 +74,7 @@ const MovieProvider = ({ children }) => {
   );
 };
 
-export const useMoives = () => {
+export const useMovies = () => {
   return useContext(MoviesContext);
 };
 

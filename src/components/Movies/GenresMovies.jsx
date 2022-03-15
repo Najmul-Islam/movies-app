@@ -1,8 +1,10 @@
 import { useGenres } from "../../context/GenresContext";
+import GenresMoviesPaginate from "../pagination/GenresMoviesPaginate";
 import Movie from "./Movie";
 import "./style/genresMovies.css";
+
 const GenresMovies = () => {
-  let { genreMovies, genreName } = useGenres();
+  const { genreName, currentGenreMovies } = useGenres();
 
   return (
     <div className="container-fluid">
@@ -11,9 +13,15 @@ const GenresMovies = () => {
       </div>
       <div className="row">
         <div className="col-12 col-xl-10 col-md-9 p-3 movies__item">
-          {genreMovies.map((movie) => (
+          {currentGenreMovies.map((movie) => (
             <Movie key={movie._id} movie={movie} />
           ))}
+        </div>
+      </div>
+
+      <div className="row">
+        <div className="border__top border__bottom">
+          <GenresMoviesPaginate itemsPerPage={3} />
         </div>
       </div>
     </div>

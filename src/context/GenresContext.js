@@ -12,6 +12,11 @@ export const GenresProvider = ({ children }) => {
   const [genreName, setGenreName] = useState("");
   const [genres, setGenres] = useState([]);
 
+  // for react paginate
+  const [currentGenreMovies, setCurrentGenreMovies] = useState([]);
+  const [pageCount, setPageCount] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
+
   const getGenres = async () => {
     try {
       const response = await axios.get(genres_api);
@@ -27,6 +32,7 @@ export const GenresProvider = ({ children }) => {
   }, []);
 
   const handleGenreSelect = (genre) => {
+    setItemOffset(0);
     setGenreMovies(genre.movies);
     setGenreName(genre.genre);
     window.localStorage.setItem("genreMovies", JSON.stringify(genre.movies));
@@ -44,10 +50,16 @@ export const GenresProvider = ({ children }) => {
       value={{
         genres,
         setGenres,
-        handleGenreSelect,
         genreMovies,
         setGenreMovies,
+        handleGenreSelect,
         genreName,
+        currentGenreMovies,
+        setCurrentGenreMovies,
+        pageCount,
+        setPageCount,
+        itemOffset,
+        setItemOffset,
       }}
     >
       {children}

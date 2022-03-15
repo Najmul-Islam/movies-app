@@ -8,6 +8,8 @@ const TvContext = createContext();
 
 export const TvProvider = ({ children }) => {
   const [series, setSeries] = useState([]);
+  // for react paginate
+  const [currentSeries, setCurrentSeries] = useState([]);
 
   const fetchSeries = async () => {
     try {
@@ -24,7 +26,9 @@ export const TvProvider = ({ children }) => {
   }, []);
 
   return (
-    <TvContext.Provider value={{ series, setSeries }}>
+    <TvContext.Provider
+      value={{ series, setSeries, currentSeries, setCurrentSeries }}
+    >
       {children}
     </TvContext.Provider>
   );
