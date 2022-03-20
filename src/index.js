@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import { MovieProvider } from "./context/MoviesContext";
 import { GenresProvider } from "./context/GenresContext";
 import { TvProvider } from "./context/TvContext";
+import { TvGenresProvider } from "./context/TvGenresContext";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
@@ -15,7 +16,9 @@ ReactDOM.render(
     <MovieProvider>
       <GenresProvider>
         <TvProvider>
-          <App />
+          <TvGenresProvider>
+            <App />
+          </TvGenresProvider>
         </TvProvider>
       </GenresProvider>
     </MovieProvider>

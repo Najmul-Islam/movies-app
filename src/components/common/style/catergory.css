@@ -1,34 +1,21 @@
 /* import { FaArrowRight, } from "react-icons/fa"; */
 
-[data-arrow="left"] > button {
-  background: url(https://cdn.dsmcdn.com/web/production/slick-arrow.svg)
-    no-repeat center;
-  padding: 25px;
-  margin-top: -13px;
-  background-color: black;
-  border: none;
+[data-arrow="left"] {
+  color: #fff;
+  font-size: 25px;
+  margin-top: -6px;
+  left: 0;
   cursor: pointer;
-  height: 40px;
-  left: -35px;
-  outline: 0;
   position: absolute;
-  -webkit-transform: rotate(180deg) scale(0.5);
-  transform: rotate(180deg) scale(0.5);
 }
 
-[data-arrow="right"] > button {
-  background: url(https://cdn.dsmcdn.com/web/production/slick-arrow.svg)
-    no-repeat center;
-  padding: 25px;
-  margin-top: -13px;
-  background-color: black;
-  right: -15px;
-  border: none;
+[data-arrow="right"] {
+  color: #fff;
+  font-size: 25px;
+  margin-top: -6px;
+  right: 0;
   cursor: pointer;
-  outline: 0;
   position: absolute;
-  -webkit-transform: scale(0.5);
-  transform: scale(0.5);
 }
 .category {
   margin: 10px 5px 10px 5px;
@@ -37,4 +24,7 @@
   background: rgba(235, 202, 202, 0.1);
   padding: 5px 10px;
   border-radius: 10px;
+}
+.styles-module_slider__o0fqa {
+  height: 27px;
 }

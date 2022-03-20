@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import "./style/singleMovie.css";
+
 // url endpoint
 const movies_url = process.env.REACT_APP_MOVIES_API;
 const media_url = process.env.REACT_APP_MEDIA_API;
@@ -31,37 +33,55 @@ const SingleMovie = () => {
   }, [params, navigate]);
 
   return (
-    <>
-      <button onClick={() => navigate(-1)} className="btn btn-primary">
-        Back
-      </button>
-      <div className="row">
-        <div className="col-5 col-md-4">
+    <div className="container min-vh-100 ">
+      <div className="row border__left border__right py-2">
+        <div className="col">
+          <div className="d-flex justify-content-md-start justify-content-end">
+            <button onClick={() => navigate(-1)} className="px-5 btn btn-dark">
+              Back
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="row border__right border__top border__right border__left">
+        <div className="col-3 border__right py-3">
           <img
             className="img-fluid"
             src={`${media_url}${mediaUrl}`}
             alt={singleMovie.title}
           />
         </div>
-        <div className="col-7 col-md-8">
-          <h3>{singleMovie.title}</h3>
-          <h5>Year: {singleMovie.year}</h5>
+        <div className="col-9 py-2">
+          <h3 className="sm-title">{singleMovie.title}</h3>
+          <h5 className="sm-rating">Rating: {singleMovie.rating}</h5>
+          <h5 className="sm-year">Year: {singleMovie.year}</h5>
 
-          <h5>
+          <h5 className="sm-genres">
             Genre:
             {genres.map((genre) => (
-              <span key={genre._id}>{genre.genre}</span>
+              <span className="sm-genre" key={genre._id}>
+                {genre.genre}
+              </span>
             ))}
           </h5>
+
+          <a
+            href={singleMovie.sublink}
+            rel="noreferrer"
+            target="_blank"
+            className="btn btn-success"
+          >
+            Download Subtitle
+          </a>
         </div>
       </div>
 
-      <div className="row">
-        <div className="col-md-12 py-5">
+      <div className="row border__left border__bottom border__top border__right">
+        <div className="col-md-12 py-3">
           <p>{singleMovie.desc}</p>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

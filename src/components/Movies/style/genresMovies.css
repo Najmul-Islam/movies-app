@@ -29,3 +29,8 @@
   position: relative;
   vertical-align: middle;
 }
+@media only screen and (max-width: 576px) {
+  .genre-heading {
+    font-size: 1.5rem;
+  }
+}

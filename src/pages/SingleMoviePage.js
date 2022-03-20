@@ -2,13 +2,13 @@ import SingleMovie from "../components/movies/SingleMovie";
 
 const SingleMoviePage = () => {
   const singlemovie = {
-    minHeight: "80vh",
+    minHeight: "100vh",
   };
 
   return (
-    <div className="container py-5" style={singlemovie}>
+    <>
       <SingleMovie />
-    </div>
+    </>
   );
 };
 

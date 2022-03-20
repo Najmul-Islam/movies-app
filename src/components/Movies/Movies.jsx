@@ -1,13 +1,12 @@
 import React from "react";
 import { useMovies } from "../../context/MoviesContext";
-import MoviesPaginate from "../pagination/MoivesPaginate";
+import MoviesPaginate from "../pagination/MoviesPaginate";
 import Movie from "./Movie";
 import Loading from "../common/Loading";
 import "./style/movies.css";
 
 const Movies = () => {
   const { allMovies, isLoading, currentMovies } = useMovies();
-  console.log(currentMovies);
   if (isLoading) {
     return <Loading />;
   }
@@ -18,16 +17,16 @@ const Movies = () => {
 
   return (
     <>
-      <div className="row">
-        <div className="col-12 col-xl-10 col-md-9 p-4 movies__item">
+      <div className="row mt-2">
+        <div className="col movies__item">
           {currentMovies.map((movie) => {
             return <Movie key={movie._id} movie={movie} />;
           })}
         </div>
       </div>
-      <div className="row">
-        <div className="border__top border__bottom">
-          <MoviesPaginate itemsPerPage={1} />
+      <div className="row border__top border__bottom">
+        <div className="">
+          <MoviesPaginate itemsPerPage={50} />
         </div>
       </div>
     </>

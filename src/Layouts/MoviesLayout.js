@@ -1,11 +1,10 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import { useMovies } from "../context/MoviesContext";
+import { useGenres } from "../context/GenresContext";
 import Sidebar from "../components/sidebar/Sidebar";
 
 const MoviesLayout = () => {
-  const { genres, selectedGenre, handleGenreSelect } = useMovies();
-
+  const { genres, handleGenreSelect } = useGenres();
   return (
     <>
       <div className="container-fluid">
@@ -13,11 +12,11 @@ const MoviesLayout = () => {
           <div className="col-xl-10 col-md-9">
             <Outlet />
           </div>
-          <div className="col-xl-2 col-md-3 d-none d-md-block">
+          <div className="col-xl-2 col-md-3 d-none d-md-block border__left border__right border__bottom">
             <Sidebar
               genres={genres}
-              selectedGenre={selectedGenre}
-              onGenreSelect={handleGenreSelect}
+              handleGenreSelect={handleGenreSelect}
+              link="/movies/genres"
             />
           </div>
         </div>

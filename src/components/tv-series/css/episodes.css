@@ -1,0 +1,56 @@
+.episode__poster {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+
+.season__title {
+  font-size: 20px;
+}
+
+.season__year {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.season__year > span {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.season__rating {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.season__rating > span {
+  font-size: 15px;
+  font-weight: 400;
+}
+.episode__title {
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.episode__title:hover {
+  color: #408bea;
+}
+
+@media only screen and (max-width: 576px) {
+  .season__title {
+    font-size: 16px;
+  }
+
+  .season__year {
+    font-size: 13px;
+  }
+
+  .season__rating {
+    font-size: 13px;
+  }
+
+  .episode__title {
+    font-size: 15px;
+  }
+}

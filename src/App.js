@@ -1,6 +1,5 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
 // Movies Route
 import MoviesLayout from "./Layouts/MoviesLayout";
 import MoviesPage from "./pages/MoviesPage";
@@ -13,9 +12,11 @@ import TvLayout from "./Layouts/TvLayout";
 import TvSeasonsPage from "./pages/TvSeasonsPage";
 import EpisodesPage from "./pages/EpisodesPage";
 import SingleEpisodePage from "./pages/SingleEpisodePage";
+import TvGenresPage from "./pages/TvGenresPage";
 // Blog Route
 import BlogPage from "./pages/BlogPage";
 // Others Route
+import HomePage from "./pages/HomePage";
 import About from "./pages/About";
 import ContactUs from "./pages/ContactUs";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -30,7 +31,7 @@ function App() {
     <>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/movies" element={<MoviesLayout />}>
           <Route path="/movies" element={<MoviesPage />} />
           <Route path="/movies/search" element={<SearchMoviesPage />} />
@@ -39,12 +40,10 @@ function App() {
         <Route path="/movies/:_id" element={<SingleMoviePage />} />
         <Route path="/tv-series" element={<TvLayout />}>
           <Route path="/tv-series" element={<TvSeasonsPage />} />
-          <Route path="/tv-series/:_id" element={<EpisodesPage />} />
-          <Route
-            path="/tv-series/episode/:_id"
-            element={<SingleEpisodePage />}
-          />
+          <Route path="/tv-series/genres/:genre" element={<TvGenresPage />} />
         </Route>
+        <Route path="/tv-series/:_id" element={<EpisodesPage />} />
+        <Route path="/tv-series/episode/:_id" element={<SingleEpisodePage />} />
 
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/about-us" element={<About />} />

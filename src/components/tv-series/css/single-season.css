@@ -1,4 +1,4 @@
-.movie {
+.tv {
   padding: 0.5rem;
   width: calc(100% / 12);
   /* height: 260px; */
@@ -12,7 +12,7 @@
   position: relative;
   overflow: hidden;
 }
-.movie__img {
+.tv__img {
   object-fit: cover;
   aspect-ratio: 11/16;
   width: 100%;
@@ -40,11 +40,11 @@
 .img__container:hover .img__overley {
   opacity: 0.7;
 }
-.img__container:hover .movie__img {
+.img__container:hover .tv__img {
   transform: scale(1.2);
   /* filter: blur(1px); */
 }
-.movie__rate {
+.tv__rate {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.5);
   color: #fff;
@@ -58,49 +58,65 @@
   transition: 0.3s;
 }
 
-.img__container:hover .movie__rate {
+.img__container:hover .tv__rate {
   margin-bottom: 0;
 }
 
-.movie__info {
+.tv__season-no {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 2px 4px;
+  color: #fff;
+  left: 0;
+  bottom: -3px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.tv__info {
   padding: 10px 0;
   line-height: 7px;
 }
-.movie__title {
+.tv__title {
   font-size: 14px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   transition: 0.2s ease;
 }
-.movie__info:hover .movie__title {
+.tv__info:hover .tv__title {
   color: #408bea;
 }
 
-.movie__year {
+.tv__year {
   font-size: 12px;
 }
 
 @media only screen and (max-width: 1380px) {
-  .movie {
+  .tv {
     width: calc(100% / 8);
   }
 }
 
 @media only screen and (max-width: 1100px) {
-  .movie {
+  .tv {
     width: calc(100% / 6);
   }
 }
 
 @media only screen and (max-width: 576px) {
-  .movie {
+  .tv {
     width: calc(100% / 4);
   }
-  .movie__title {
+
+  .tv__title {
     font-size: 12px;
   }
-  .movie__rate {
+
+  .tv__season-no {
+    font-size: 10px;
+  }
+  .tv__rate {
     font-size: 10px;
     padding: 0px 5px;
   }

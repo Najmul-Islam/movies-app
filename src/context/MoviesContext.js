@@ -24,7 +24,7 @@ const MovieProvider = ({ children }) => {
   const getMovies = async () => {
     try {
       setIsLoading(true);
-      const response = await axios.get(`${movies_url}`);
+      const response = await axios.get(`${movies_url}?_sort=createdAt:DESC`);
       const movies = response.data;
       setAllMovies(movies);
       setAllDefaultMovies(movies);

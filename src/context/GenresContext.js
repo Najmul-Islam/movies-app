@@ -9,8 +9,8 @@ const GenresContext = createContext();
 
 export const GenresProvider = ({ children }) => {
   const [genreMovies, setGenreMovies] = useState([]);
-  const [genreName, setGenreName] = useState("");
   const [genres, setGenres] = useState([]);
+  const [genreName, setGenreName] = useState("");
 
   // for react paginate
   const [currentGenreMovies, setCurrentGenreMovies] = useState([]);
@@ -19,7 +19,7 @@ export const GenresProvider = ({ children }) => {
 
   const getGenres = async () => {
     try {
-      const response = await axios.get(genres_api);
+      const response = await axios.get(`${genres_api}?_sort=genre`);
       const genres = await response.data;
       setGenres(genres);
     } catch (error) {
@@ -37,6 +37,7 @@ export const GenresProvider = ({ children }) => {
     setGenreName(genre.genre);
     window.localStorage.setItem("genreMovies", JSON.stringify(genre.movies));
     window.localStorage.setItem("genreName", JSON.stringify(genre.genre));
+    window.scrollTo(0, 0);
   };
 
   useEffect(() => {

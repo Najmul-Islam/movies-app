@@ -1,49 +1,49 @@
 import React, { useEffect } from "react";
 import ReactPaginate from "react-paginate";
 import { FaAngleDoubleRight, FaAngleDoubleLeft } from "react-icons/fa";
-import { useMovies } from "../../context/MoviesContext";
-import "./css/pagination.css";
+import { useTvGenres } from "../../context/TvGenresContext";
 
-const MoviesPaginate = ({ itemsPerPage }) => {
+import "./css/pagination.css";
+const TvGenresPaginate = ({ itemsPerPage }) => {
   const {
-    allMovies,
-    setCurrentMovies,
+    tvGenreSeasons,
+    setCurrentTvGenreSeasons,
     pageCount,
     setPageCount,
     itemOffset,
     setItemOffset,
-  } = useMovies();
+  } = useTvGenres();
 
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
-    setCurrentMovies(allMovies.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(allMovies.length / itemsPerPage));
+    setCurrentTvGenreSeasons(tvGenreSeasons.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(tvGenreSeasons.length / itemsPerPage));
   }, [
-    allMovies,
-    setCurrentMovies,
+    itemOffset,
+    itemsPerPage,
+    tvGenreSeasons,
+    setCurrentTvGenreSeasons,
     pageCount,
     setPageCount,
-    itemOffset,
     setItemOffset,
-    itemsPerPage,
   ]);
 
   const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % allMovies.length;
+    const newOffset = (event.selected * itemsPerPage) % tvGenreSeasons.length;
     setItemOffset(newOffset);
   };
 
+  const currentPage = Math.round(itemOffset / itemsPerPage);
   return (
     <>
       <ReactPaginate
         onPageChange={handlePageClick}
         pageCount={pageCount}
-        pageRangeDisplayed={3}
         marginPagesDisplayed={2}
+        pageRangeDisplayed={3}
         breakLabel="..."
         nextLabel={<FaAngleDoubleRight />}
         previousLabel={<FaAngleDoubleLeft />}
-        containerClassName="pagination"
         pageClassName="page-item"
         pageLinkClassName="page-link"
         previousClassName="page-item"
@@ -52,11 +52,13 @@ const MoviesPaginate = ({ itemsPerPage }) => {
         nextLinkClassName="page-link"
         breakClassName="page-item"
         breakLinkClassName="page-link"
+        containerClassName="pagination"
         activeClassName="active"
         renderOnZeroPageCount={null}
+        forcePage={currentPage}
       />
     </>
   );
 };
 
-export default MoviesPaginate;
+export default TvGenresPaginate;

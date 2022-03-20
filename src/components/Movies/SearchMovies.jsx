@@ -16,13 +16,13 @@ const SearchMovies = () => {
   }
 
   return (
-    <>
-      <div className="col-12 col-xl-10 col-md-9 p-4 movies__item">
+    <div className="row mt-2">
+      <div className="col movies__item">
         {allDefaultMovies.map((movie) => {
           return <Movie key={movie._id} movie={movie} />;
         })}
       </div>
-    </>
+    </div>
   );
 };
 

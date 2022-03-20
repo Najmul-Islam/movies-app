@@ -1,16 +1,18 @@
 import { NavLink } from "react-router-dom";
 import { ScrollingCarousel } from "@trendyol-js/react-carousel";
-import { useGenres } from "../../context/GenresContext";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import "./style/catergory.css";
 
-const Category = () => {
-  const { genres, handleGenreSelect } = useGenres();
-
+const Category = ({ genres, handleGenreSelect, link }) => {
   return (
-    <div className="bg__dark border__bottom cursor__pointer mx-4 py-1">
-      <ScrollingCarousel>
+    <div className="bg__dark border__bottom cursor__pointer py-1">
+      <ScrollingCarousel
+        transition={1}
+        rightIcon={<FaArrowRight />}
+        leftIcon={<FaArrowLeft />}
+      >
         {genres.map((genre) => (
-          <NavLink to={`/movies/genres/${genre.genre.toLowerCase()}`}>
+          <NavLink to={`${link}/${genre.genre.toLowerCase()}`}>
             <span
               key={genre.id}
               onClick={() => handleGenreSelect(genre)}

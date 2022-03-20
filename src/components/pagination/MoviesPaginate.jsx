@@ -1,48 +1,50 @@
 import React, { useEffect } from "react";
 import ReactPaginate from "react-paginate";
 import { FaAngleDoubleRight, FaAngleDoubleLeft } from "react-icons/fa";
-import { useGenres } from "../../context/GenresContext";
+import { useMovies } from "../../context/MoviesContext";
 import "./css/pagination.css";
-const GenresMoviesPaginate = ({ itemsPerPage }) => {
+
+const MoviesPaginate = ({ itemsPerPage }) => {
   const {
-    genreMovies,
-    setCurrentGenreMovies,
+    allMovies,
+    setCurrentMovies,
     pageCount,
     setPageCount,
     itemOffset,
     setItemOffset,
-  } = useGenres();
+  } = useMovies();
 
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
-    setCurrentGenreMovies(genreMovies.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(genreMovies.length / itemsPerPage));
+    setCurrentMovies(allMovies.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(allMovies.length / itemsPerPage));
+    window.scrollTo(0, 0);
   }, [
-    itemOffset,
-    itemsPerPage,
-    genreMovies,
-    setCurrentGenreMovies,
+    allMovies,
+    setCurrentMovies,
     pageCount,
     setPageCount,
+    itemOffset,
     setItemOffset,
+    itemsPerPage,
   ]);
 
   const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % genreMovies.length;
+    const newOffset = (event.selected * itemsPerPage) % allMovies.length;
     setItemOffset(newOffset);
   };
 
-  const currentPage = Math.round(itemOffset / itemsPerPage);
   return (
     <>
       <ReactPaginate
         onPageChange={handlePageClick}
         pageCount={pageCount}
-        marginPagesDisplayed={2}
         pageRangeDisplayed={3}
+        marginPagesDisplayed={2}
         breakLabel="..."
         nextLabel={<FaAngleDoubleRight />}
         previousLabel={<FaAngleDoubleLeft />}
+        containerClassName="pagination"
         pageClassName="page-item"
         pageLinkClassName="page-link"
         previousClassName="page-item"
@@ -51,13 +53,11 @@ const GenresMoviesPaginate = ({ itemsPerPage }) => {
         nextLinkClassName="page-link"
         breakClassName="page-item"
         breakLinkClassName="page-link"
-        containerClassName="pagination"
         activeClassName="active"
         renderOnZeroPageCount={null}
-        forcePage={currentPage}
       />
     </>
   );
 };
 
-export default GenresMoviesPaginate;
+export default MoviesPaginate;
