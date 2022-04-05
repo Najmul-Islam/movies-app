@@ -10,6 +10,7 @@ const TvContext = createContext();
 export const TvProvider = ({ children }) => {
   const [series, setSeries] = useState([]);
   const [allEpisode, setAllEpisode] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   // for react paginate
   const [currentSeries, setCurrentSeries] = useState([]);
@@ -17,9 +18,13 @@ export const TvProvider = ({ children }) => {
 
   const fetchSeries = async () => {
     try {
-      const response = await axios.get(tv_seasons_api);
+      setIsLoading(true);
+      const response = await axios.get(
+        `${tv_seasons_api}?_sort=createdAt:DESC`
+      );
       const series = await response.data;
       setSeries(series);
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -50,6 +55,8 @@ export const TvProvider = ({ children }) => {
         setAllEpisode,
         currentEpisode,
         setCurrentEpisode,
+        isLoading,
+        setIsLoading,
       }}
     >
       {children}

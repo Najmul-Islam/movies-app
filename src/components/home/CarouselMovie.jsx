@@ -1,36 +1,35 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import play from "./style/play.svg";
 // import SingleLoading from "./SingleLoading.js";
 import { FaStar } from "react-icons/fa";
-import "./style/movie.css";
+import "./css/carouselMovie.css";
 
 const media_url = process.env.REACT_APP_MEDIA_API;
 
-const Movie = ({ movie }) => {
+const CarouselMovie = ({ movie }) => {
   return (
-    <div className="movie">
+    <div className="cmovie">
       <NavLink to={`/movies/${movie._id}`} style={{ textDecoration: "none" }}>
-        <div className="img__container">
+        <div className="cimg__container">
           <img
-            className="movie__img img-fluid"
+            className="cmovie__img img-fluid"
             src={`${media_url}${movie.poster.formats.small.url}`}
             alt={movie.title}
           />
-          <div className="img__overley">
-            <img src={play} alt="" />
+          <div className="cimg__overley">
+            <img src="images/play.svg" alt="" />
           </div>
-          <span className="movie__rate">
+          <span className="cmovie__rate">
             <FaStar /> {movie.rating}
           </span>
         </div>
-        <div className="movie__info" title={movie.title}>
-          <h3 className="movie__title">{movie.title}</h3>
-          <p className="movie__year">{movie.year}</p>
+        <div className="cmovie__info" title={movie.title}>
+          <h3 className="cmovie__title">{movie.title}</h3>
+          <p className="cmovie__year">{movie.year}</p>
         </div>
       </NavLink>
     </div>
   );
 };
 
-export default Movie;
+export default CarouselMovie;

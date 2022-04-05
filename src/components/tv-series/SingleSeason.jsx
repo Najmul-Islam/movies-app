@@ -2,6 +2,7 @@ import React from "react";
 import { FaStar } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import "./css/single-season.css";
+import play from "./css/play.svg";
 const media_url = process.env.REACT_APP_MEDIA_API;
 
 const SingleSeason = ({ singleSeason }) => {
@@ -12,14 +13,14 @@ const SingleSeason = ({ singleSeason }) => {
         to={`/tv-series/${singleSeason._id}`}
         style={{ textDecoration: "none" }}
       >
-        <div className="img__container">
+        <div className="tv-img__container">
           <img
             className="tv__img img-fluid"
             src={`${media_url}${singleSeason.poster.formats.small.url}`}
             alt={singleSeason.title}
           />
-          <div className="img__overley">
-            <img src="images/play.svg" alt="" />
+          <div className="tv-img__overley">
+            <img src={play} alt="" />
           </div>
           <span className="tv__rate">
             <FaStar /> {singleSeason.rating}

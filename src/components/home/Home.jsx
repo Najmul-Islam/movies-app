@@ -1,11 +1,15 @@
 import React from "react";
-import MoviesCarousel from "../carousel/MoviesCarousel";
+import MoviesCarousel from "./MoviesCarousel";
+import HomeMovies from "./HomeMovies";
+import HomeTvSeason from "./HomeTvSeason";
 
 const Home = () => {
   return (
-    <div className="container">
-      <MoviesCarousel />
-    </div>
+    <>
+      {/* <MoviesCarousel /> */}
+      <HomeMovies />
+      <HomeTvSeason />
+    </>
   );
 };
 

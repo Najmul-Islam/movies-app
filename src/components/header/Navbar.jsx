@@ -15,9 +15,9 @@ const Header = () => {
     <nav className="navbar navbar-expand-md navbar-dark py-1 border__bottom bg__dark">
       <div className="container-fluid">
         {/* logo */}
-        <span className="navbar-brand fs-2">
+        <NavLink to="/" className="navbar-brand fs-2">
           <img src="images/vmovee.png" alt="logo" className="navbar__logo" />
-        </span>
+        </NavLink>
         <button
           className="navbar-toggler shadow-none"
           type="button"

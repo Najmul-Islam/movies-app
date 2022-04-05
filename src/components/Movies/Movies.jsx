@@ -17,7 +17,7 @@ const Movies = () => {
 
   return (
     <>
-      <div className="row mt-2">
+      <div className="row">
         <div className="col movies__item">
           {currentMovies.map((movie) => {
             return <Movie key={movie._id} movie={movie} />;

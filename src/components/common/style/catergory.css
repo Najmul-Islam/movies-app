@@ -1,21 +1,25 @@
-/* import { FaArrowRight, } from "react-icons/fa"; */
-
 [data-arrow="left"] {
   color: #fff;
-  font-size: 25px;
-  margin-top: -6px;
+  font-size: 15px;
+  margin-top: 0px;
   left: 0;
   cursor: pointer;
   position: absolute;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 0px 14px 3px 09px;
+  border-radius: 15px;
 }
 
 [data-arrow="right"] {
   color: #fff;
-  font-size: 25px;
-  margin-top: -6px;
+  font-size: 15px;
+  margin-top: 0px;
   right: 0;
   cursor: pointer;
   position: absolute;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 0px 10px 3px 10px;
+  border-radius: 15px;
 }
 .category {
   margin: 10px 5px 10px 5px;

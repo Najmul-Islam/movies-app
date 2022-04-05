@@ -11,6 +11,7 @@ const MovieProvider = ({ children }) => {
   // movies
   const [allMovies, setAllMovies] = useState([]);
   const [allDefaultMovies, setAllDefaultMovies] = useState([]);
+
   const [isLoading, setIsLoading] = useState(false);
   // for react paginate
   const [currentMovies, setCurrentMovies] = useState([]);
@@ -25,9 +26,12 @@ const MovieProvider = ({ children }) => {
     try {
       setIsLoading(true);
       const response = await axios.get(`${movies_url}?_sort=createdAt:DESC`);
+
       const movies = response.data;
+
       setAllMovies(movies);
       setAllDefaultMovies(movies);
+
       setIsLoading(false);
     } catch (error) {
       console.log(error);

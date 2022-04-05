@@ -1,18 +1,18 @@
-.tv {
+.cmovie {
   padding: 0.5rem;
-  width: calc(100% / 12);
+  /* width: calc(100% / 12); */
   /* height: 260px; */
   overflow: hidden;
   position: relative;
   cursor: pointer;
 }
 
-.tv-img__container {
+.cimg__container {
   width: 100%;
   position: relative;
   overflow: hidden;
 }
-.tv__img {
+.cmovie__img {
   object-fit: cover;
   aspect-ratio: 11/16;
   width: 100%;
@@ -20,7 +20,7 @@
   transition: all 0.3s ease-in-out;
 }
 
-.tv-img__overley {
+.cimg__overley {
   background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
   width: 100%;
@@ -33,18 +33,18 @@
   opacity: 0;
 }
 
-.tv-img__overley img {
+.cimg__overley img {
   width: 50px;
 }
 
-.tv-img__container:hover .tv-img__overley {
+.cimg__container:hover .cimg__overley {
   opacity: 0.7;
 }
-.tv-img__container:hover .tv__img {
+.cimg__container:hover .cmovie__img {
   transform: scale(1.2);
   /* filter: blur(1px); */
 }
-.tv__rate {
+.cmovie__rate {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.5);
   color: #fff;
@@ -58,69 +58,53 @@
   transition: 0.3s;
 }
 
-.tv-img__container:hover .tv__rate {
+.cimg__container:hover .cmovie__rate {
   margin-bottom: 0;
 }
 
-.tv__season-no {
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 2px 4px;
-  color: #fff;
-  left: 0;
-  bottom: -3px;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.tv__info {
+.cmovie__info {
   padding: 10px 0;
   line-height: 7px;
 }
-.tv__title {
+.cmovie__title {
   font-size: 14px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   transition: 0.2s ease;
 }
-.tv__info:hover .tv__title {
+.cmovie__info:hover .cmovie__title {
   color: #408bea;
 }
 
-.tv__year {
+.cmovie__year {
   font-size: 12px;
 }
 
 @media only screen and (max-width: 1380px) {
-  .tv {
-    width: calc(100% / 8);
+  .cmovie {
+    /* width: calc(100% / 8); */
   }
 }
 
 @media only screen and (max-width: 1100px) {
-  .tv {
-    width: calc(100% / 6);
+  .cmovie {
+    /* width: calc(100% / 6); */
   }
 }
 
 @media only screen and (max-width: 576px) {
-  .tv {
-    width: calc(100% / 4);
+  .cmovie {
+    /* width: calc(100% / 4); */
   }
-
-  .tv__title {
+  .cmovie__title {
     font-size: 12px;
   }
-
-  .tv__season-no {
-    font-size: 10px;
-  }
-  .tv__rate {
+  .cmovie__rate {
     font-size: 10px;
     padding: 0px 5px;
   }
-  .tv-img__overley img {
+  .cimg__overley img {
     width: 30px !important;
   }
 }

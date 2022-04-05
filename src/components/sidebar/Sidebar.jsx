@@ -1,11 +1,8 @@
 import { NavLink } from "react-router-dom";
 import { FaAngleDoubleRight } from "react-icons/fa";
-
 import "./style/sidebar.css";
 
 const Sidebar = ({ genres, handleGenreSelect, link }) => {
-  // const { genres, handleGenreSelect } = useGenres();
-  console.log("genres", genres);
   return (
     <div className="sidebar bg__dark">
       {/* Genres */}

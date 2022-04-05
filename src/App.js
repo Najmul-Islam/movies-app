@@ -15,8 +15,10 @@ import SingleEpisodePage from "./pages/SingleEpisodePage";
 import TvGenresPage from "./pages/TvGenresPage";
 // Blog Route
 import BlogPage from "./pages/BlogPage";
-// Others Route
+// Home
+import HomeLayout from "./Layouts/HomeLayout";
 import HomePage from "./pages/HomePage";
+// Others Route
 import About from "./pages/About";
 import ContactUs from "./pages/ContactUs";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -31,7 +33,9 @@ function App() {
     <>
       <Header />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<HomeLayout />}>
+          <Route path="/" element={<HomePage />} />
+        </Route>
         <Route path="/movies" element={<MoviesLayout />}>
           <Route path="/movies" element={<MoviesPage />} />
           <Route path="/movies/search" element={<SearchMoviesPage />} />
