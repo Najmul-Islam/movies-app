@@ -1,32 +1,50 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 // Movies Route
-import MoviesLayout from "./Layouts/MoviesLayout";
-import MoviesPage from "./pages/MoviesPage";
-import SingleMoviePage from "./pages/SingleMoviePage";
-import SearchMoviesPage from "./pages/SearchMoviesPage";
+import MoviesLayout from "./client/Layouts/MoviesLayout";
+import MoviesPage from "./client/pages/MoviesPage";
+import SingleMoviePage from "./client/pages/SingleMoviePage";
+import SearchMoviesPage from "./client/pages/SearchMoviesPage";
 // Genres Route
-import GenresPage from "./pages/GenresPage";
+import GenresPage from "./client/pages/GenresPage";
 // Tv seasons Route
-import TvLayout from "./Layouts/TvLayout";
-import TvSeasonsPage from "./pages/TvSeasonsPage";
-import EpisodesPage from "./pages/EpisodesPage";
-import SingleEpisodePage from "./pages/SingleEpisodePage";
-import TvGenresPage from "./pages/TvGenresPage";
+import TvLayout from "./client/Layouts/TvLayout";
+import TvSeasonsPage from "./client/pages/TvSeasonsPage";
+import EpisodesPage from "./client/pages/EpisodesPage";
+import SingleEpisodePage from "./client/pages/SingleEpisodePage";
+import TvGenresPage from "./client/pages/TvGenresPage";
 // Blog Route
-import BlogPage from "./pages/BlogPage";
+import BlogPage from "./client/pages/BlogPage";
 // Home
-import HomeLayout from "./Layouts/HomeLayout";
-import HomePage from "./pages/HomePage";
+import HomeLayout from "./client/Layouts/HomeLayout";
+import HomePage from "./client/pages/HomePage";
 // Others Route
-import About from "./pages/About";
-import ContactUs from "./pages/ContactUs";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import TermsCondition from "./pages/TermsCondition";
-import NotFound from "./pages/NotFound";
+import About from "./client/pages/About";
+import ContactUs from "./client/pages/ContactUs";
+import PrivacyPolicy from "./client/pages/PrivacyPolicy";
+import TermsCondition from "./client/pages/TermsCondition";
+import NotFound from "./client/pages/NotFound";
 
-import Header from "./components/header/Header";
-import Footer from "./components/common/Footer";
+import Header from "./client/components/header/Header";
+import Footer from "./client/components/common/Footer";
+
+// admin routes
+import AdminLayout from "./admin/layouts/AdminLayout";
+import AdminHomeScreen from "./admin/screens/home/HomeScreen";
+// posts
+import AllPostsScreen from "./admin/screens/posts/AllPostsScreen";
+import AddPostScreen from "./admin/screens/posts/AddPostScreen";
+import CategoriesScreen from "./admin/screens/posts/CategoriesScreen";
+import TagsScreen from "./admin/screens/posts/TagsScreen";
+// media
+import LibraryScreen from "./admin/screens/media/LibraryScreen";
+import AddLibraryScreen from "./admin/screens/media/AddLibraryScreen";
+// comments
+import CommentsScreen from "./admin/screens/comments/CommentsScreen";
+// users
+import AllUsersScreen from "./admin/screens/users/AllUsersScreen";
+import AddUserScreen from "./admin/screens/users/AddUserScreen";
+import ProfileScreen from "./admin/screens/users/ProfileScreen";
 
 function App() {
   return (
@@ -55,6 +73,24 @@ function App() {
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/tarms-condition" element={<TermsCondition />} />
         <Route path="/*" element={<NotFound />} />
+        {/* admin routes */}
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route path="/admin" element={<AdminHomeScreen />} />
+          {/* post */}
+          <Route path="/admin/post/all-posts" element={<AllPostsScreen />} />
+          <Route path="/admin/post/add-new" element={<AddPostScreen />} />
+          <Route path="/admin/post/categories" element={<CategoriesScreen />} />
+          <Route path="/admin/post/tags" element={<TagsScreen />} />
+          {/* media */}
+          <Route path="/admin/media/library" element={<LibraryScreen />} />
+          <Route path="/admin/media/add-new" element={<AddLibraryScreen />} />
+          {/* comments */}
+          <Route path="/admin/comments" element={<CommentsScreen />} />
+          {/* users */}
+          <Route path="/admin/users/all-users" element={<AllUsersScreen />} />
+          <Route path="/admin/users/add-new" element={<AddUserScreen />} />
+          <Route path="/admin/users/profile" element={<ProfileScreen />} />
+        </Route>
       </Routes>
       <Footer />
     </>
