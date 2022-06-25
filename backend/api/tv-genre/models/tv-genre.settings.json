@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tv_genres",
+  "info": {
+    "name": "Tv-genre",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "genre": {
+      "type": "string",
+      "required": true
+    },
+    "tv_seasons": {
+      "via": "tv_genres",
+      "collection": "tv-seasons",
+      "dominant": true
+    }
+  }
+}

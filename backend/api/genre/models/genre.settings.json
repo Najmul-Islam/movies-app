@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "genres",
+  "info": {
+    "name": "genre",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "genre": {
+      "type": "string"
+    },
+    "movies": {
+      "via": "genres",
+      "collection": "movies"
+    }
+  }
+}

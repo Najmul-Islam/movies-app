@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "episodes",
+  "info": {
+    "name": "episode",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "desc": {
+      "type": "richtext"
+    },
+    "sublink": {
+      "type": "string"
+    },
+    "tv_seasons": {
+      "via": "episodes",
+      "collection": "tv-seasons"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "year": {
+      "type": "integer"
+    },
+    "episodeNo": {
+      "type": "string"
+    },
+    "poster": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true,
+      "pluginOptions": {}
+    }
+  }
+}

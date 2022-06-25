@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/tv-seasons",
+      "handler": "tv-seasons.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tv-seasons/count",
+      "handler": "tv-seasons.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tv-seasons/:id",
+      "handler": "tv-seasons.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/tv-seasons",
+      "handler": "tv-seasons.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/tv-seasons/:id",
+      "handler": "tv-seasons.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/tv-seasons/:id",
+      "handler": "tv-seasons.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

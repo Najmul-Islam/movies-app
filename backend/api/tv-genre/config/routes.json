@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/tv-genres",
+      "handler": "tv-genre.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tv-genres/count",
+      "handler": "tv-genre.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tv-genres/:id",
+      "handler": "tv-genre.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/tv-genres",
+      "handler": "tv-genre.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/tv-genres/:id",
+      "handler": "tv-genre.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/tv-genres/:id",
+      "handler": "tv-genre.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
