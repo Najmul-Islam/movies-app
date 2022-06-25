@@ -40,7 +40,7 @@ const Episodes = () => {
         </div>
       </div>
       <div className="row border__bottom border__right">
-        <div className="col-4 col-xl-2  col-md-3 py-3 border__right border__left">
+        <div className="col-4 col-xl-2 col-md-3 py-3 border__right border__left">
           <img
             className="img-fluid"
             src={`${media_url}${seasonPoster}`}
